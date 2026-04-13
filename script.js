@@ -1,32 +1,54 @@
-// Efeito de mudança de cor no Navbar ao rolar a página
-window.addEventListener('scroll', function() {
-    const navbar = document.getElementById('navbar');
-    if (window.scrollY > 50) {
-        navbar.style.padding = '0.5rem 5%';
-        navbar.style.background = '#ffffffef';
-    } else {
-        navbar.style.padding = '1rem 5%';
-        navbar.style.background = '#ffffff';
+// Armazenamento de estado da aplicação
+let score = 0;
+const userNameDisplay = document.getElementById('welcome-text');
+
+// 1. Função para personalizar saudação (Manipulação de Texto e Variáveis)
+document.getElementById('btn-start').addEventListener('click', () => {
+    const inputName = document.getElementById('user-name-input').value;
+    if (inputName.trim() !== "") {
+        userNameDisplay.innerText = `Olá, ${inputName}! Vamos cultivar o futuro?`;
+        // Esconde a área de input após o uso
+        document.querySelector('.user-interaction').style.display = 'none';
     }
 });
 
-// Mensagem de boas-vindas no console (Debug/Info)
-console.log("AgroForte carregado: Equilíbrio entre produção e ambiente.");
+// 2. Simulador de Sustentabilidade (Lógica e Atualização de Tela)
+const scoreElement = document.getElementById('score-counter');
+const statusText = document.getElementById('farm-status');
 
-// Animação simples de entrada para os cards
-const cards = document.querySelectorAll('.card');
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
-        }
+const updateScore = (points, action) => {
+    score += points;
+    scoreElement.innerText = score;
+    
+    // Altera o status com base na pontuação
+    if (score > 50) {
+        statusText.innerText = "Fazenda de Elite Sustentável!";
+        statusText.style.color = "green";
+    } else {
+        statusText.innerText = `Ação realizada: ${action}`;
+    }
+};
+
+// Eventos dos botões de ação
+document.querySelectorAll('.btn-action').forEach(button => {
+    button.addEventListener('click', (e) => {
+        const action = e.target.getAttribute('data-action');
+        updateScore(10, action);
     });
-}, { threshold: 0.1 });
+});
 
-cards.forEach(card => {
-    card.style.opacity = 0;
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'all 0.6s ease-out';
-    observer.observe(card);
+// 3. Função Modo Escuro (Melhoria de Experiência do Usuário)
+const themeBtn = document.getElementById('theme-toggle');
+themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const icon = document.getElementById('theme-icon');
+    icon.innerText = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+});
+
+// 4. Manipulação de Formulário (Prevenção de erro e feedback visual)
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Evita o recarregamento da página
+    const feedback = document.getElementById('form-feedback');
+    feedback.classList.remove('hidden'); // Mostra a div de sucesso
+    this.reset(); // Limpa o formulário
 });
