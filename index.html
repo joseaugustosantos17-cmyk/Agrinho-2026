@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -12,50 +13,64 @@
             <div class="logo">AGRO<span>FORTE</span></div>
             <ul class="nav-menu">
                 <li><a href="#home">Início</a></li>
+                <li><a href="#pilares">Pilares</a></li>
                 <li><a href="#simulador">Simulador</a></li>
-                <li><a href="#contato">Mensagem</a></li>
             </ul>
-            <button id="theme-toggle" title="Alternar Modo Escuro">
-                <span id="theme-icon">🌙</span>
-            </button>
+            <button id="theme-toggle">🌙</button>
         </nav>
     </header>
 
-    <main>
-        <section id="home" class="hero">
+    <section id="home" class="hero">
+        <div class="hero-overlay">
             <div class="hero-content container">
-                <h1 id="welcome-text">Inovação Verde no Campo</h1>
-                <p>Equilibrando produção e biodiversidade.</p>
+                <h1 id="welcome-text">O Amanhã da Agricultura é <br><span>Sustentável</span></h1>
+                <p>Tecnologia e natureza trabalhando em harmonia para alimentar o mundo.</p>
                 <div class="user-interaction">
-                    <label for="user-name-input">Seu nome:</label>
-                    <input type="text" id="user-name-input" placeholder="Digite aqui...">
-                    <button id="btn-start" class="btn-primary">Personalizar</button>
+                    <input type="text" id="user-name-input" placeholder="Seu nome...">
+                    <button id="btn-start" class="btn-primary">Explorar</button>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="simulador" class="container">
-            <h2>Simulador Sustentável</h2>
-            <div class="simulador-box">
-                <button class="btn-action" data-points="10">Plantar Árvores</button>
-                <button class="btn-action" data-points="15">Irrigação Inteligente</button>
-                <p>Pontos de Sustentabilidade: <strong id="score-counter">0</strong></p>
-                <p id="farm-status">Status: Aguardando ações...</p>
+    <section id="pilares" class="container">
+        <h2 class="section-title">Nossos Compromissos</h2>
+        <div class="grid-pilares">
+            <div class="pilar-card">
+                <div class="icon">🛰️</div>
+                <h3>Precisão</h3>
+                <p>Uso de drones e IA para evitar desperdício de insumos no solo.</p>
             </div>
-        </section>
+            <div class="pilar-card">
+                <div class="icon">💧</div>
+                <h3>Hídrica</h3>
+                <p>Sistemas de irrigação que economizam até 40% de água.</p>
+            </div>
+            <div class="pilar-card">
+                <div class="icon">🐝</div>
+                <h3>Bio</h3>
+                <p>Preservação de polinizadores para colheitas mais saudáveis.</p>
+            </div>
+        </div>
+    </section>
 
-        <section id="contato" class="container">
-            <form id="contact-form">
-                <label for="msg">Sua sugestão para o futuro:</label>
-                <textarea id="msg" required></textarea>
-                <button type="submit" class="btn-primary">Enviar</button>
-                <p id="form-feedback" class="hidden">Obrigado! Mensagem enviada.</p>
-            </form>
-        </section>
-    </main>
+    <section id="simulador" class="container">
+        <div class="simulador-card">
+            <h2>Calculadora de Impacto Positivo</h2>
+            <p>Selecione uma ação para ver a economia gerada:</p>
+            <div class="simulador-controls">
+                <button class="btn-calc" data-value="500" data-msg="Litros de água economizados">💧 Irrigação Inteligente</button>
+                <button class="btn-calc" data-value="200" data-msg="Kg de CO2 evitados">🌱 Plantio Direto</button>
+            </div>
+            <div class="result-box">
+                <span id="score-counter">0</span>
+                <p id="farm-status">Unidades de Sustentabilidade</p>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <p>&copy; 2026 AgroForte - Agrinho: Equilíbrio e Futuro.</p>
+        <p>Desenvolvido para o Projeto Agrinho 2026 - Conectando Campo e Futuro.</p>
     </footer>
 
     <script src="script.js"></script>
