@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroForte | Equilíbrio e Sustentabilidade</title>
+    <title>AgroForte | Inovação e Natureza</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,11 +13,12 @@
             <div class="logo">AGRO<span>FORTE</span></div>
             <ul class="nav-menu">
                 <li><a href="#home">Início</a></li>
-                <li><a href="#pilares">Pilares</a></li>
+                <li><a href="#tecnologia">Tecnologia</a></li>
+                <li><a href="#biodiversidade">Ambiente</a></li>
                 <li><a href="#simulador">Simulador</a></li>
                 <li><a href="#contato">Propostas</a></li>
             </ul>
-            <button id="theme-toggle" title="Modo Noturno">
+            <button id="theme-toggle" title="Alternar Visão">
                 <span id="theme-icon">🌙</span>
             </button>
         </nav>
@@ -27,72 +28,88 @@
         <section id="home" class="hero">
             <div class="hero-overlay">
                 <div class="hero-content container">
-                    <h1 id="welcome-text">Produzir para Nutrir, <br>Preservar para Existir.</h1>
-                    <p>O Agronegócio brasileiro é a força que alimenta o mundo através da tecnologia aliada ao respeito ambiental.</p>
+                    <h1 id="welcome-text">O Futuro do Agro é <br>Verde e Digital.</h1>
+                    <p>Conectando a eficiência da produção com a inteligência da preservação ambiental.</p>
                     <div class="user-interaction">
-                        <input type="text" id="user-name-input" placeholder="Seu nome para o certificado...">
-                        <button id="btn-start" class="btn-primary">Personalizar Painel</button>
+                        <input type="text" id="user-name-input" placeholder="Seu nome...">
+                        <button id="btn-start" class="btn-primary">Personalizar Site</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="pilares" class="container">
-            <h2 class="section-title">O Equilíbrio em Prática</h2>
-            <div class="grid-pilares">
-                <div class="pilar-card">
-                    <h3>01. Bioeconomia</h3>
-                    <p>Transformamos resíduos em energia e novos produtos, fechando o ciclo da produção sem desperdícios.</p>
+        <section id="tecnologia" class="container section-padding">
+            <h2 class="section-title">Tecnologia 5.0 no Campo</h2>
+            <div class="grid-content">
+                <div class="info-box">
+                    <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=400&q=80" alt="Drone no campo" class="img-fluid">
+                    <h3>Inteligência Artificial</h3>
+                    <p>Algoritmos que analisam o solo em tempo real, reduzindo o uso de químicos em até 40%.</p>
                 </div>
-                <div class="pilar-card">
-                    <h3>02. Tecnologia 4.0</h3>
-                    <p>Drones e sensores de solo garantem que cada gota de água e cada grama de adubo sejam usados com precisão.</p>
-                </div>
-                <div class="pilar-card">
-                    <h3>03. Reflorestamento</h3>
-                    <p>O Agro Forte protege as APPs (Áreas de Preservação Permanente) como pulmões da própria fazenda.</p>
+                <div class="info-box">
+                    <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=400&q=80" alt="Sensores" class="img-fluid">
+                    <h3>Internet das Coisas (IoT)</h3>
+                    <p>Sensores de umidade que ativam a irrigação apenas quando necessário, economizando água preciosa.</p>
                 </div>
             </div>
         </section>
 
-        <section id="simulador" class="simulador-section">
+        <section id="biodiversidade" class="bg-alt section-padding">
             <div class="container">
-                <h2>Simulador de Impacto Ambiental</h2>
-                <p>Clique nas ações abaixo para equilibrar sua fazenda virtual:</p>
-                <div class="simulador-box">
-                    <div class="actions">
-                        <button class="btn-action" data-points="15" data-msg="Reflorestamento iniciado!">🌱 Plantar Mata Ciliar</button>
-                        <button class="btn-action" data-points="10" data-msg="Sensores ativados!">🛰️ Monitoramento via Drone</button>
-                        <button class="btn-action" data-points="20" data-msg="Solo saudável!">🌾 Rotação de Culturas</button>
-                    </div>
-                    <div class="result-panel">
-                        <div class="score-box">
-                            <span id="score-counter">0</span>
-                            <p>Pontos de Sustentabilidade</p>
-                        </div>
-                        <p id="farm-status">Status: Aguardando primeira ação...</p>
+                <h2 class="section-title">Equilíbrio Ambiental</h2>
+                <div class="bio-flex">
+                    <div class="bio-text">
+                        <h3>Preservar é Produzir</h3>
+                        <p>O AgroForte promove o sistema **ILP (Integração Lavoura-Pecuária)**, que recupera solos degradados e aumenta a biodiversidade local. Florestas preservadas atraem polinizadores naturais que aumentam a produtividade das plantações em até 20%.</p>
+                        <ul class="check-list">
+                            <li>✓ Corredores Ecológicos</li>
+                            <li>✓ Refúgios para Polinizadores</li>
+                            <li>✓ Proteção de Nascentes</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contato" class="container">
-            <div class="form-card">
-                <h3>Sua Voz no Futuro do Campo</h3>
-                <p>Envie sua ideia de como a tecnologia pode ajudar o meio ambiente no Agro.</p>
-                <form id="contact-form">
-                    <textarea id="msg" placeholder="Descreva sua proposta sustentável..." required></textarea>
-                    <button type="submit" class="btn-primary">Enviar Sugestão</button>
-                    <p id="form-feedback" class="hidden">✅ Sua ideia foi enviada com sucesso ao nosso banco de inovações!</p>
-                </form>
+        <section id="simulador" class="container section-padding">
+            <h2 class="section-title">Simulador de Sustentabilidade</h2>
+            <div class="simulador-card">
+                <div class="actions-grid">
+                    <button class="btn-action" data-points="20" data-msg="Reflorestamento concluído! +20">🌳 Reflorestar APP</button>
+                    <button class="btn-action" data-points="15" data-msg="Energia Solar instalada! +15">☀️ Painéis Solares</button>
+                    <button class="btn-action" data-points="10" data-msg="Fertilizante orgânico usado! +10">🍃 Adubação Verde</button>
+                </div>
+                <div class="status-panel">
+                    <div class="gauge">
+                        <span id="score-counter">0</span>
+                        <p>Eco-Pontos</p>
+                    </div>
+                    <p id="farm-status">Prepare sua fazenda para o futuro!</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="bg-alt section-padding">
+            <div class="container small-container">
+                <div class="form-container">
+                    <h3>Envie sua Ideia Sustentável</h3>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label>Sua sugestão para o Agrinho 2026:</label>
+                            <textarea id="msg" required placeholder="Como podemos equilibrar ainda mais a produção e o ambiente?"></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Enviar para Análise</button>
+                    </form>
+                    <div id="form-feedback" class="hidden success-msg">Sua proposta foi registrada com sucesso!</div>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p><strong>Projeto Agrinho 2026</strong> - Criado por José Augusto Santos</p>
-            <p>Tema: Agro Forte, Futuro Sustentável: Equilíbrio entre Produção e Meio Ambiente.</p>
+            <p>&copy; 2026 AgroForte - Equilíbrio entre Produção e Meio Ambiente.</p>
+            <p>Projeto para o Concurso Agrinho.</p>
         </div>
     </footer>
 
