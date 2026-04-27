@@ -3,73 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroForte - Futuro Sustentável</title>
+    <title>Agro Forte: Futuro Sustentável</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-
-    <header id="main-header">
-        <nav class="container">
-            <div class="logo">AGRO<span>FORTE</span></div>
-            <ul class="nav-menu">
-                <li><a href="#home">Início</a></li>
-                <li><a href="#simulador">Simulador</a></li>
-                <li><a href="#contato">Mensagem</a></li>
+    <header>
+        <nav id="navbar">
+            <div class="logo">AgroSustentável</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sobre">Equilíbrio</a></li>
+                <li><a href="#contato">Contato</a></li>
             </ul>
-            <button id="theme-toggle" title="Alternar Modo Escuro">
-                <span id="theme-icon">🌙</span>
-            </button>
+            <button id="theme-toggle">Alternar Modo</button>
         </nav>
     </header>
 
     <main>
         <section id="home" class="hero">
-            <div class="hero-content container">
-                <h1 id="welcome-text">Inovação Verde no Campo</h1>
-                <p>Equilibrando a força da produção com o respeito à biodiversidade.</p>
-                <div class="user-interaction">
-                    <label for="user-name">Para começar, qual seu nome?</label>
-                    <input type="text" id="user-name-input" placeholder="Digite aqui...">
-                    <button id="btn-start" class="btn-primary">Personalizar Experiência</button>
+            <div class="hero-content">
+                <h1 id="welcome-text">Produzir para Alimentar, Preservar para Durar</h1>
+                <p>O equilíbrio perfeito entre a tecnologia no campo e a conservação ambiental.</p>
+                <div class="interactive-box">
+                    <input type="text" id="user-name" placeholder="Digite seu nome">
+                    <button onclick="personalizarBoasVindas()">Personalizar Experiência</button>
                 </div>
             </div>
         </section>
 
-        <section id="simulador" class="container">
-            <h2>Simulador de Equilíbrio Sustentável</h2>
-            <p>Veja como pequenas ações mudam o futuro do nosso ecossistema.</p>
-            
-            <div class="simulador-box">
-                <div class="controls">
-                    <button class="btn-action" data-action="plantar">Plantar Árvores</button>
-                    <button class="btn-action" data-action="irrigar">Irrigação Inteligente</button>
-                    <button id="btn-reset">Resetar</button>
+        <section id="sobre" class="container">
+            <h2>Pilares da Sustentabilidade</h2>
+            <div class="cards-grid">
+                <div class="card" onclick="toggleDetail('detalhe1')">
+                    <h3>Tecnologia Verde</h3>
+                    <p>Uso de drones e sensores para otimizar insumos.</p>
+                    <div id="detalhe1" class="hidden-info">Redução de 30% no desperdício de água.</div>
                 </div>
-                
-                <div id="status-display" class="display-panel">
-                    <p>Status da Fazenda: <strong id="farm-status">Aguardando início...</strong></p>
-                    <p>Pontos de Sustentabilidade: <span id="score-counter">0</span></p>
-                </div>
-            </div>
-        </section>
-
-        <section id="contato" class="container">
-            <form id="contact-form">
-                <h3>Envie sua Ideia Sustentável</h3>
-                <div class="form-group">
-                    <label for="msg">Sua sugestão:</label>
-                    <textarea id="msg" required placeholder="Como podemos melhorar o agro?"></textarea>
-                </div>
-                <button type="submit" class="btn-primary">Enviar Proposta</button>
-                <p id="form-feedback" class="hidden">Obrigado! Sua mensagem foi processada com sucesso.</p>
-            </form>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Projeto Agrinho - Criado com ferramentas digitais (Canva e Piskel).</p>
-    </footer>
-
-    <script src="assets/js/script.js"></script>
-</body>
-</html>
+                <div class="card" onclick="toggleDetail('detalhe2')">
+                    <h3>Recuperação de Solo</h3>
+                    <p>Rotação de culturas e plantio direto.</p>
+                    <div id="detalhe2
