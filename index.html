@@ -1,45 +1,63 @@
-<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agro Forte: Futuro Sustentável</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>AgroForte | Futuro Sustentável</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <nav id="navbar">
-            <div class="logo">AgroSustentável</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#sobre">Equilíbrio</a></li>
-                <li><a href="#contato">Contato</a></li>
+
+    <header id="main-header">
+        <nav class="container">
+            <div class="logo">AGRO<span>FORTE</span></div>
+            <ul class="nav-menu">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#simulador">Simulador</a></li>
+                <li><a href="#contato">Mensagem</a></li>
             </ul>
-            <button id="theme-toggle">Alternar Modo</button>
+            <button id="theme-toggle" title="Alternar Modo Escuro">
+                <span id="theme-icon">🌙</span>
+            </button>
         </nav>
     </header>
 
     <main>
         <section id="home" class="hero">
-            <div class="hero-content">
-                <h1 id="welcome-text">Produzir para Alimentar, Preservar para Durar</h1>
-                <p>O equilíbrio perfeito entre a tecnologia no campo e a conservação ambiental.</p>
-                <div class="interactive-box">
-                    <input type="text" id="user-name" placeholder="Digite seu nome">
-                    <button onclick="personalizarBoasVindas()">Personalizar Experiência</button>
+            <div class="hero-content container">
+                <h1 id="welcome-text">Inovação Verde no Campo</h1>
+                <p>Equilibrando produção e biodiversidade.</p>
+                <div class="user-interaction">
+                    <label for="user-name-input">Seu nome:</label>
+                    <input type="text" id="user-name-input" placeholder="Digite aqui...">
+                    <button id="btn-start" class="btn-primary">Personalizar</button>
                 </div>
             </div>
         </section>
 
-        <section id="sobre" class="container">
-            <h2>Pilares da Sustentabilidade</h2>
-            <div class="cards-grid">
-                <div class="card" onclick="toggleDetail('detalhe1')">
-                    <h3>Tecnologia Verde</h3>
-                    <p>Uso de drones e sensores para otimizar insumos.</p>
-                    <div id="detalhe1" class="hidden-info">Redução de 30% no desperdício de água.</div>
-                </div>
-                <div class="card" onclick="toggleDetail('detalhe2')">
-                    <h3>Recuperação de Solo</h3>
-                    <p>Rotação de culturas e plantio direto.</p>
-                    <div id="detalhe2
+        <section id="simulador" class="container">
+            <h2>Simulador Sustentável</h2>
+            <div class="simulador-box">
+                <button class="btn-action" data-points="10">Plantar Árvores</button>
+                <button class="btn-action" data-points="15">Irrigação Inteligente</button>
+                <p>Pontos de Sustentabilidade: <strong id="score-counter">0</strong></p>
+                <p id="farm-status">Status: Aguardando ações...</p>
+            </div>
+        </section>
+
+        <section id="contato" class="container">
+            <form id="contact-form">
+                <label for="msg">Sua sugestão para o futuro:</label>
+                <textarea id="msg" required></textarea>
+                <button type="submit" class="btn-primary">Enviar</button>
+                <p id="form-feedback" class="hidden">Obrigado! Mensagem enviada.</p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 AgroForte - Agrinho: Equilíbrio e Futuro.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
