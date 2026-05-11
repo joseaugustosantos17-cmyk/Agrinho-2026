@@ -1,88 +1,166 @@
 <!-- GAME AGRO -->
+/* CONTAINER PRINCIPAL DO JOGO */
+.game-container {
+    background: var(--gray);
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
+    border: 2px solid var(--accent);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
 
-<section id="game" class="section-padding">
+/* 1. STATUS BOXES (DASHBOARD) */
+.game-stats {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
 
-    <div class="container">
+.stat-box {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border-bottom: 4px solid var(--secondary);
+    transition: var(--transition);
+}
 
-        <h2 class="section-title">
-            🌾 Missão Fazenda Inteligente
-        </h2>
+.stat-box h3 {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
-        <div class="game-container">
+.stat-box span {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+}
 
-            <!-- STATUS -->
-            <div class="game-stats">
+/* 2. ÁREA DA PLANTA (CENTRO) */
+.plant-area {
+    background: white;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    position: relative;
+    box-shadow: var(--shadow);
+}
 
-                <div class="stat-box">
-                    <h3>💰 Agro Coins</h3>
-                    <span id="coins">0</span>
-                </div>
+#plant {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: plantFloat 3s ease-in-out infinite;
+}
 
-                <div class="stat-box">
-                    <h3>⚡ Energia</h3>
-                    <span id="energy">100</span>
-                </div>
+#plant:hover {
+    transform: scale(1.1);
+}
 
-                <div class="stat-box">
-                    <h3>🌱 Nível Verde</h3>
-                    <span id="level">1</span>
-                </div>
+#weather-status {
+    margin-top: 20px;
+    padding: 8px 20px;
+    background: var(--accent);
+    border-radius: 50px;
+    font-weight: 600;
+    color: var(--primary-dark);
+}
 
-            </div>
+/* 3. AÇÕES (BOTÕES DE JOGO) */
+.game-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
 
-            <!-- PLANTA -->
-            <div class="plant-area">
+.game-btn {
+    padding: 20px 15px;
+    border: none;
+    border-radius: 15px;
+    background: white;
+    color: var(--primary-dark);
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 6px 0 var(--secondary); /* Efeito 3D */
+    transition: all 0.1s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(0,0,0,0.05);
+}
 
-                <img
-                    id="plant"
-                    src="https://cdn-icons-png.flaticon.com/512/628/628324.png"
-                    alt="planta">
+.game-btn:hover {
+    background: var(--gray);
+    transform: translateY(2px);
+    box-shadow: 0 4px 0 var(--secondary);
+}
 
-                <p id="weather-status">
-                    ☀️ Clima Ensolarado
-                </p>
+.game-btn:active {
+    transform: translateY(6px);
+    box-shadow: 0 0 0 var(--secondary);
+}
 
-            </div>
+/* 4. LISTA DE MISSÕES */
+.missions {
+    grid-column: 1 / -1;
+    background: var(--primary-dark);
+    color: white;
+    padding: 25px;
+    border-radius: 20px;
+}
 
-            <!-- AÇÕES -->
-            <div class="game-actions">
+.missions h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
 
-                <button class="game-btn" id="water-btn">
-                    💧 Regar Plantação
-                </button>
+#mission-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
 
-                <button class="game-btn" id="solar-btn">
-                    ☀️ Instalar Energia Solar
-                </button>
+#mission-list li {
+    background: rgba(255,255,255,0.1);
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
 
-                <button class="game-btn" id="forest-btn">
-                    🌳 Preservar Floresta
-                </button>
+#mission-list li:hover {
+    background: rgba(255,255,255,0.2);
+}
 
-                <button class="game-btn" id="harvest-btn">
-                    🚜 Fazer Colheita
-                </button>
+/* ANIMAÇÕES */
+@keyframes plantFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
 
-            </div>
-
-            <!-- MISSÕES -->
-            <div class="missions">
-
-                <h3>🎯 Missões Sustentáveis</h3>
-
-                <ul id="mission-list">
-
-                    <li>✅ Regar a plantação</li>
-                    <li>⬜ Instalar energia solar</li>
-                    <li>⬜ Preservar área verde</li>
-                    <li>⬜ Fazer colheita sustentável</li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
+/* RESPONSIVIDADE */
+@media (max-width: 900px) {
+    .game-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .game-stats {
+        grid-template-columns: 1fr;
+    }
+}
