@@ -1,118 +1,298 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroForte | Inovação e Natureza</title>
+
+    <title>AgroForte | Futuro Sustentável</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
 
+    <!-- HEADER -->
     <header id="main-header">
+
         <nav class="container">
-            <div class="logo">AGRO<span>FORTE</span></div>
+
+            <div class="logo">
+                AGRO<span>FORTE</span>
+            </div>
+
             <ul class="nav-menu">
                 <li><a href="#home">Início</a></li>
                 <li><a href="#tecnologia">Tecnologia</a></li>
                 <li><a href="#biodiversidade">Ambiente</a></li>
                 <li><a href="#simulador">Simulador</a></li>
-                <li><a href="#contato">Propostas</a></li>
+                <li><a href="#contato">Contato</a></li>
             </ul>
-            <button id="theme-toggle" title="Alternar Visão">
+
+            <button id="theme-toggle">
                 <span id="theme-icon">🌙</span>
             </button>
+
         </nav>
+
     </header>
 
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-overlay">
-                <div class="hero-content container">
-                    <h1 id="welcome-text">O Futuro do Agro é <br>Verde e Digital.</h1>
-                    <p>Conectando a eficiência da produção com a inteligência da preservação ambiental.</p>
-                    <div class="user-interaction">
-                        <input type="text" id="user-name-input" placeholder="Seu nome...">
-                        <button id="btn-start" class="btn-primary">Personalizar Site</button>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- HERO -->
+    <section id="home" class="hero">
 
-        <section id="tecnologia" class="container section-padding">
-            <h2 class="section-title">Tecnologia 5.0 no Campo</h2>
-            <div class="grid-content">
-                <div class="info-box">
-                    <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=400&q=80" alt="Drone no campo" class="img-fluid">
-                    <h3>Inteligência Artificial</h3>
-                    <p>Algoritmos que analisam o solo em tempo real, reduzindo o uso de químicos em até 40%.</p>
-                </div>
-                <div class="info-box">
-                    <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=400&q=80" alt="Sensores" class="img-fluid">
-                    <h3>Internet das Coisas (IoT)</h3>
-                    <p>Sensores de umidade que ativam a irrigação apenas quando necessário, economizando água preciosa.</p>
-                </div>
-            </div>
-        </section>
+        <!-- VÍDEO -->
+        <video autoplay muted loop playsinline class="bg-video">
+            <source src="video-agro.mp4" type="video/mp4">
+        </video>
 
-        <section id="biodiversidade" class="bg-alt section-padding">
-            <div class="container">
-                <h2 class="section-title">Equilíbrio Ambiental</h2>
-                <div class="bio-flex">
-                    <div class="bio-text">
-                        <h3>Preservar é Produzir</h3>
-                        <p>O AgroForte promove o sistema **ILP (Integração Lavoura-Pecuária)**, que recupera solos degradados e aumenta a biodiversidade local. Florestas preservadas atraem polinizadores naturais que aumentam a produtividade das plantações em até 20%.</p>
-                        <ul class="check-list">
-                            <li>✓ Corredores Ecológicos</li>
-                            <li>✓ Refúgios para Polinizadores</li>
-                            <li>✓ Proteção de Nascentes</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="hero-overlay">
 
-        <section id="simulador" class="container section-padding">
-            <h2 class="section-title">Simulador de Sustentabilidade</h2>
-            <div class="simulador-card">
-                <div class="actions-grid">
-                    <button class="btn-action" data-points="20" data-msg="Reflorestamento concluído! +20">🌳 Reflorestar APP</button>
-                    <button class="btn-action" data-points="15" data-msg="Energia Solar instalada! +15">☀️ Painéis Solares</button>
-                    <button class="btn-action" data-points="10" data-msg="Fertilizante orgânico usado! +10">🍃 Adubação Verde</button>
-                </div>
-                <div class="status-panel">
-                    <div class="gauge">
-                        <span id="score-counter">0</span>
-                        <p>Eco-Pontos</p>
-                    </div>
-                    <p id="farm-status">Prepare sua fazenda para o futuro!</p>
-                </div>
-            </div>
-        </section>
+            <div class="hero-content container">
 
-        <section id="contato" class="bg-alt section-padding">
-            <div class="container small-container">
-                <div class="form-container">
-                    <h3>Envie sua Ideia Sustentável</h3>
-                    <form id="contact-form">
-                        <div class="form-group">
-                            <label>Sua sugestão para o Agrinho 2026:</label>
-                            <textarea id="msg" required placeholder="Como podemos equilibrar ainda mais a produção e o ambiente?"></textarea>
-                        </div>
-                        <button type="submit" class="btn-submit">Enviar para Análise</button>
-                    </form>
-                    <div id="form-feedback" class="hidden success-msg">Sua proposta foi registrada com sucesso!</div>
-                </div>
-            </div>
-        </section>
-    </main>
+                <h1 id="welcome-text">
+                    O Futuro do Agro é Verde e Digital
+                </h1>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 AgroForte - Equilíbrio entre Produção e Meio Ambiente.</p>
-            <p>Projeto para o Concurso Agrinho.</p>
+                <p>
+                    Tecnologia, inovação e sustentabilidade caminhando juntas.
+                </p>
+
+                <div class="user-interaction">
+
+                    <input type="text"
+                        id="user-name-input"
+                        placeholder="Digite seu nome">
+
+                    <button id="btn-start" class="btn-primary">
+                        Começar Jornada
+                    </button>
+
+                </div>
+
+            </div>
+
         </div>
+
+    </section>
+
+    <!-- TECNOLOGIA -->
+    <section id="tecnologia" class="section-padding">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Tecnologia 5.0 no Campo
+            </h2>
+
+            <div class="grid-content">
+
+                <div class="info-box">
+
+                    <img src="https://images.unsplash.com/photo-1581092921461-eab10380be59?q=80&w=1200&auto=format&fit=crop"
+                        alt="Drone">
+
+                    <div class="card-content">
+
+                        <i class="fas fa-robot"></i>
+
+                        <h3>Inteligência Artificial</h3>
+
+                        <p>
+                            Sistemas inteligentes que analisam o solo e reduzem desperdícios.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="info-box">
+
+                    <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop"
+                        alt="Energia">
+
+                    <div class="card-content">
+
+                        <i class="fas fa-solar-panel"></i>
+
+                        <h3>Energia Limpa</h3>
+
+                        <p>
+                            Painéis solares e sensores inteligentes para economia sustentável.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="info-box">
+
+                    <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop"
+                        alt="Natureza">
+
+                    <div class="card-content">
+
+                        <i class="fas fa-leaf"></i>
+
+                        <h3>Biodiversidade</h3>
+
+                        <p>
+                            Preservar o meio ambiente aumenta produtividade e equilíbrio ecológico.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- BIODIVERSIDADE -->
+    <section id="biodiversidade" class="section-padding bg-alt">
+
+        <div class="container bio-flex">
+
+            <div class="bio-text">
+
+                <h2 class="section-title">
+                    Preservar é Produzir
+                </h2>
+
+                <p>
+                    O sistema ILP recupera solos degradados,
+                    aumenta biodiversidade e fortalece o futuro sustentável.
+                </p>
+
+                <ul class="check-list">
+                    <li>🌳 Corredores ecológicos</li>
+                    <li>🐝 Proteção dos polinizadores</li>
+                    <li>💧 Preservação das nascentes</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SIMULADOR -->
+    <section id="simulador" class="section-padding">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Simulador Sustentável
+            </h2>
+
+            <div class="simulador-card">
+
+                <div class="actions-grid">
+
+                    <button class="btn-action"
+                        data-points="20"
+                        data-msg="Reflorestamento concluído!">
+                        🌳 Reflorestar APP
+                    </button>
+
+                    <button class="btn-action"
+                        data-points="15"
+                        data-msg="Energia Solar ativada!">
+                        ☀️ Painéis Solares
+                    </button>
+
+                    <button class="btn-action"
+                        data-points="10"
+                        data-msg="Adubação verde aplicada!">
+                        🍃 Adubação Verde
+                    </button>
+
+                </div>
+
+                <div class="status-panel">
+
+                    <div class="gauge">
+
+                        <span id="score-counter">0</span>
+
+                        <p>Eco Pontos</p>
+
+                    </div>
+
+                    <p id="farm-status">
+                        Prepare sua fazenda para o futuro.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="section-padding bg-alt">
+
+        <div class="container small-container">
+
+            <div class="form-container">
+
+                <h3>Envie sua Ideia Sustentável</h3>
+
+                <form id="contact-form">
+
+                    <textarea
+                        id="msg"
+                        required
+                        placeholder="Escreva sua ideia sustentável...">
+                    </textarea>
+
+                    <button type="submit" class="btn-submit">
+                        Enviar Proposta
+                    </button>
+
+                </form>
+
+                <div id="form-feedback" class="hidden">
+                    ✅ Proposta enviada com sucesso!
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="container">
+
+            <p>
+                © 2026 AgroForte | Projeto Agrinho
+            </p>
+
+        </div>
+
     </footer>
 
+    <!-- CONFETTI -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <!-- SCRIPT -->
     <script src="script.js"></script>
+
 </body>
+
 </html>
