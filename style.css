@@ -1,361 +1,136 @@
+/* 1. IMPORTAÇÃO ÚNICA E VARIÁVEIS LIMPAS */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-:root{
-    --primary:#2e7d32;
-    --secondary:#81c784;
-    --dark:#121212;
-    --light:#ffffff;
-    --gray:#f4f4f4;
-    --text:#333;
-    --transition:0.3s ease;
+:root {
+    --primary: #2e7d32;
+    --primary-dark: #1b5e20;
+    --secondary: #81c784;
+    --accent: #c8e6c9;
+    --dark: #121212;
+    --light: #ffffff;
+    --gray: #f8f9fa;
+    --text: #2d3436;
+    --text-light: #636e72;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    scroll-behavior:smooth;
+/* 2. RESET & SETUP */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
-body{
-    font-family:'Poppins',sans-serif;
-    background:var(--light);
-    color:var(--text);
-    transition:var(--transition);
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--light);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-.container{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
 }
 
-.section-padding{
-    padding:100px 0;
+/* 3. TIPOGRAFIA & SEÇÕES */
+.section-padding {
+    padding: 80px 0;
 }
 
-.section-title{
-    text-align:center;
-    font-size:2.5rem;
-    margin-bottom:60px;
-    color:var(--primary);
-    position:relative;
+.section-title {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin-bottom: 50px;
+    color: var(--primary);
 }
 
-.section-title::after{
-    content:'';
-    width:80px;
-    height:4px;
-    background:var(--secondary);
-    display:block;
-    margin:10px auto;
-    border-radius:10px;
+.section-title::after {
+    content: '';
+    width: 60px;
+    height: 4px;
+    background: var(--secondary);
+    display: block;
+    margin: 15px auto;
+    border-radius: 50px;
 }
 
-/* HEADER */
-
-#main-header{
-    position:fixed;
-    top:0;
-    width:100%;
-    z-index:1000;
-    backdrop-filter:blur(10px);
-    background:rgba(0,0,0,0.4);
-    padding:15px 0;
+/* 4. HEADER (Efeito Glassmorphism) */
+#main-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 20px 0;
+    transition: var(--transition);
 }
 
-nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+#main-header.scrolled {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px);
+    padding: 12px 0;
+    box-shadow: var(--shadow);
 }
 
-.logo{
-    font-size:2rem;
-    font-weight:700;
-    color:white;
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.logo span{
-    color:var(--secondary);
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--light);
+    text-decoration: none;
 }
 
-.nav-menu{
-    display:flex;
-    list-style:none;
-    gap:30px;
+.logo span { color: var(--secondary); }
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 25px;
 }
 
-.nav-menu a{
-    color:white;
-    text-decoration:none;
-    font-weight:500;
-    transition:var(--transition);
+.nav-menu a {
+    color: var(--light);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    position: relative;
 }
 
-.nav-menu a:hover{
-    color:var(--secondary);
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--secondary);
+    transition: var(--transition);
 }
 
-/* HERO */
+.nav-menu a:hover::after { width: 100%; }
 
-.hero{
-    height:100vh;
-    background:url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-    position:relative;
+/* 5. HERO SECTION */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    display: flex;
+    align-items: center;
 }
 
-.hero-overlay{
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.55);
-    display:flex;
-    align-items:center;
-}
-
-.hero-content{
-    color:white;
-    animation:fadeUp 1s ease;
-}
-
-.hero-content h1{
-    font-size:4rem;
-    margin-bottom:20px;
-    line-height:1.1;
-}
-
-.hero-content p{
-    font-size:1.2rem;
-    margin-bottom:30px;
-    max-width:600px;
-}
-
-/* INPUT + BUTTON */
-
-.user-interaction{
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
-}
-
-.user-interaction input{
-    padding:15px;
-    border:none;
-    border-radius:10px;
-    width:250px;
-    font-size:1rem;
-}
-
-.btn-primary{
-    padding:15px 30px;
-    border:none;
-    border-radius:10px;
-    background:var(--primary);
-    color:white;
-    font-size:1rem;
-    cursor:pointer;
-    transition:var(--transition);
-}
-
-.btn-primary:hover{
-    transform:translateY(-3px);
-    background:#1b5e20;
-}
-
-/* CARDS */
-
-.grid-content{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:30px;
-}
-
-.info-box{
-    background:white;
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
-    transition:var(--transition);
-}
-
-.info-box:hover{
-    transform:translateY(-10px);
-}
-
-.img-fluid{
-    width:100%;
-    height:250px;
-    object-fit:cover;
-}
-
-.info-box h3{
-    padding:20px 20px 10px;
-    color:var(--primary);
-}
-
-.info-box p{
-    padding:0 20px 30px;
-}
-
-/* BIODIVERSIDADE */
-
-.bg-alt{
-    background:var(--gray);
-}
-
-.bio-flex{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.bio-text{
-    max-width:800px;
-    text-align:center;
-}
-
-.bio-text h3{
-    font-size:2rem;
-    margin-bottom:20px;
-}
-
-.check-list{
-    margin-top:30px;
-    list-style:none;
-}
-
-.check-list li{
-    margin:15px 0;
-    font-size:1.1rem;
-}
-
-/* SIMULADOR */
-
-.simulador-card{
-    background:linear-gradient(135deg,#2e7d32,#66bb6a);
-    padding:40px;
-    border-radius:30px;
-    color:white;
-    box-shadow:0 20px 50px rgba(0,0,0,0.2);
-}
-
-.actions-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-}
-
-.btn-action{
-    padding:20px;
-    border:none;
-    border-radius:15px;
-    background:white;
-    color:var(--primary);
-    font-weight:600;
-    cursor:pointer;
-    transition:var(--transition);
-}
-
-.btn-action:hover{
-    transform:scale(1.05);
-}
-
-.status-panel{
-    margin-top:40px;
-    text-align:center;
-}
-
-.gauge{
-    font-size:4rem;
-    font-weight:700;
-}
-
-/* FORM */
-
-.form-container{
-    background:white;
-    padding:40px;
-    border-radius:25px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
-}
-
-textarea{
-    width:100%;
-    min-height:150px;
-    padding:20px;
-    border-radius:15px;
-    border:1px solid #ccc;
-    resize:none;
-    font-family:'Poppins';
-}
-
-.btn-submit{
-    margin-top:20px;
-    padding:15px 30px;
-    border:none;
-    border-radius:10px;
-    background:var(--primary);
-    color:white;
-    cursor:pointer;
-    transition:var(--transition);
-}
-
-.btn-submit:hover{
-    background:#1b5e20;
-}
-
-/* FOOTER */
-
-footer{
-    background:#111;
-    color:white;
-    text-align:center;
-    padding:40px 20px;
-}
-
-/* DARK MODE */
-
-.dark-mode{
-    background:#121212;
-    color:white;
-}
-
-.dark-mode .info-box,
-.dark-mode .form-container{
-    background:#1e1e1e;
-    color:white;
-}
-
-.dark-mode .bg-alt{
-    background:#1a1a1a;
-}
-
-/* ANIMAÇÃO */
-
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-/* RESPONSIVO */
-
-@media(max-width:768px){
-
-    .hero-content h1{
-        font-size:2.5rem;
-    }
-
-    .nav-menu{
-        display:none;
-    }
-
-    .section-title{
-        font-size:2rem;
-    }
-}
+.hero-content h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 700;
+    color: white;
+    line-height: 1.1;
+    margin-bottom
