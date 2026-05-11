@@ -1,298 +1,88 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!-- GAME AGRO -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<section id="game" class="section-padding">
 
-    <title>AgroForte | Futuro Sustentável</title>
+    <div class="container">
 
-    <link rel="stylesheet" href="style.css">
+        <h2 class="section-title">
+            🌾 Missão Fazenda Inteligente
+        </h2>
 
-    <!-- FONT AWESOME -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <div class="game-container">
 
-    <!-- GOOGLE FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-</head>
+            <!-- STATUS -->
+            <div class="game-stats">
 
-<body>
+                <div class="stat-box">
+                    <h3>💰 Agro Coins</h3>
+                    <span id="coins">0</span>
+                </div>
 
-    <!-- HEADER -->
-    <header id="main-header">
+                <div class="stat-box">
+                    <h3>⚡ Energia</h3>
+                    <span id="energy">100</span>
+                </div>
 
-        <nav class="container">
+                <div class="stat-box">
+                    <h3>🌱 Nível Verde</h3>
+                    <span id="level">1</span>
+                </div>
 
-            <div class="logo">
-                AGRO<span>FORTE</span>
             </div>
 
-            <ul class="nav-menu">
-                <li><a href="#home">Início</a></li>
-                <li><a href="#tecnologia">Tecnologia</a></li>
-                <li><a href="#biodiversidade">Ambiente</a></li>
-                <li><a href="#simulador">Simulador</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
+            <!-- PLANTA -->
+            <div class="plant-area">
 
-            <button id="theme-toggle">
-                <span id="theme-icon">🌙</span>
-            </button>
+                <img
+                    id="plant"
+                    src="https://cdn-icons-png.flaticon.com/512/628/628324.png"
+                    alt="planta">
 
-        </nav>
-
-    </header>
-
-    <!-- HERO -->
-    <section id="home" class="hero">
-
-        <!-- VÍDEO -->
-        <video autoplay muted loop playsinline class="bg-video">
-            <source src="video-agro.mp4" type="video/mp4">
-        </video>
-
-        <div class="hero-overlay">
-
-            <div class="hero-content container">
-
-                <h1 id="welcome-text">
-                    O Futuro do Agro é Verde e Digital
-                </h1>
-
-                <p>
-                    Tecnologia, inovação e sustentabilidade caminhando juntas.
+                <p id="weather-status">
+                    ☀️ Clima Ensolarado
                 </p>
 
-                <div class="user-interaction">
+            </div>
 
-                    <input type="text"
-                        id="user-name-input"
-                        placeholder="Digite seu nome">
+            <!-- AÇÕES -->
+            <div class="game-actions">
 
-                    <button id="btn-start" class="btn-primary">
-                        Começar Jornada
-                    </button>
+                <button class="game-btn" id="water-btn">
+                    💧 Regar Plantação
+                </button>
 
-                </div>
+                <button class="game-btn" id="solar-btn">
+                    ☀️ Instalar Energia Solar
+                </button>
+
+                <button class="game-btn" id="forest-btn">
+                    🌳 Preservar Floresta
+                </button>
+
+                <button class="game-btn" id="harvest-btn">
+                    🚜 Fazer Colheita
+                </button>
 
             </div>
 
-        </div>
+            <!-- MISSÕES -->
+            <div class="missions">
 
-    </section>
+                <h3>🎯 Missões Sustentáveis</h3>
 
-    <!-- TECNOLOGIA -->
-    <section id="tecnologia" class="section-padding">
+                <ul id="mission-list">
 
-        <div class="container">
+                    <li>✅ Regar a plantação</li>
+                    <li>⬜ Instalar energia solar</li>
+                    <li>⬜ Preservar área verde</li>
+                    <li>⬜ Fazer colheita sustentável</li>
 
-            <h2 class="section-title">
-                Tecnologia 5.0 no Campo
-            </h2>
-
-            <div class="grid-content">
-
-                <div class="info-box">
-
-                    <img src="https://images.unsplash.com/photo-1581092921461-eab10380be59?q=80&w=1200&auto=format&fit=crop"
-                        alt="Drone">
-
-                    <div class="card-content">
-
-                        <i class="fas fa-robot"></i>
-
-                        <h3>Inteligência Artificial</h3>
-
-                        <p>
-                            Sistemas inteligentes que analisam o solo e reduzem desperdícios.
-                        </p>
-
-                    </div>
-
-                </div>
-
-                <div class="info-box">
-
-                    <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop"
-                        alt="Energia">
-
-                    <div class="card-content">
-
-                        <i class="fas fa-solar-panel"></i>
-
-                        <h3>Energia Limpa</h3>
-
-                        <p>
-                            Painéis solares e sensores inteligentes para economia sustentável.
-                        </p>
-
-                    </div>
-
-                </div>
-
-                <div class="info-box">
-
-                    <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop"
-                        alt="Natureza">
-
-                    <div class="card-content">
-
-                        <i class="fas fa-leaf"></i>
-
-                        <h3>Biodiversidade</h3>
-
-                        <p>
-                            Preservar o meio ambiente aumenta produtividade e equilíbrio ecológico.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- BIODIVERSIDADE -->
-    <section id="biodiversidade" class="section-padding bg-alt">
-
-        <div class="container bio-flex">
-
-            <div class="bio-text">
-
-                <h2 class="section-title">
-                    Preservar é Produzir
-                </h2>
-
-                <p>
-                    O sistema ILP recupera solos degradados,
-                    aumenta biodiversidade e fortalece o futuro sustentável.
-                </p>
-
-                <ul class="check-list">
-                    <li>🌳 Corredores ecológicos</li>
-                    <li>🐝 Proteção dos polinizadores</li>
-                    <li>💧 Preservação das nascentes</li>
                 </ul>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
 
-    <!-- SIMULADOR -->
-    <section id="simulador" class="section-padding">
-
-        <div class="container">
-
-            <h2 class="section-title">
-                Simulador Sustentável
-            </h2>
-
-            <div class="simulador-card">
-
-                <div class="actions-grid">
-
-                    <button class="btn-action"
-                        data-points="20"
-                        data-msg="Reflorestamento concluído!">
-                        🌳 Reflorestar APP
-                    </button>
-
-                    <button class="btn-action"
-                        data-points="15"
-                        data-msg="Energia Solar ativada!">
-                        ☀️ Painéis Solares
-                    </button>
-
-                    <button class="btn-action"
-                        data-points="10"
-                        data-msg="Adubação verde aplicada!">
-                        🍃 Adubação Verde
-                    </button>
-
-                </div>
-
-                <div class="status-panel">
-
-                    <div class="gauge">
-
-                        <span id="score-counter">0</span>
-
-                        <p>Eco Pontos</p>
-
-                    </div>
-
-                    <p id="farm-status">
-                        Prepare sua fazenda para o futuro.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- CONTATO -->
-    <section id="contato" class="section-padding bg-alt">
-
-        <div class="container small-container">
-
-            <div class="form-container">
-
-                <h3>Envie sua Ideia Sustentável</h3>
-
-                <form id="contact-form">
-
-                    <textarea
-                        id="msg"
-                        required
-                        placeholder="Escreva sua ideia sustentável...">
-                    </textarea>
-
-                    <button type="submit" class="btn-submit">
-                        Enviar Proposta
-                    </button>
-
-                </form>
-
-                <div id="form-feedback" class="hidden">
-                    ✅ Proposta enviada com sucesso!
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-
-        <div class="container">
-
-            <p>
-                © 2026 AgroForte | Projeto Agrinho
-            </p>
-
-        </div>
-
-    </footer>
-
-    <!-- CONFETTI -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-    <!-- SCRIPT -->
-    <script src="script.js"></script>
-
-</body>
-
-</html>
+</section>
