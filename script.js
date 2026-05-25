@@ -1,42 +1,62 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Inicializa os ícones
-    lucide.createIcons();
+// Dados do Quiz
+const perguntas = [
+    {
+        q: "Qual técnica evita a erosão do solo?",
+        options: ["Queimada", "Plantio Direto", "Desmatamento"],
+        answer: 1
+    },
+    {
+        q: "Como drones ajudam o meio ambiente?",
+        options: ["Espantando pássaros", "Aplicando insumos só onde precisa", "Tirando fotos para redes sociais"],
+        answer: 1
+    }
+];
 
-    // 1. Dark Mode com persistência
-    const themeToggle = document.getElementById('theme-toggle');
-    themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        const isDark = document.body.classList.contains('dark-mode');
-        themeToggle.innerHTML = isDark ? '☀️' : '🌓';
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+let perguntaAtual = 0;
+
+function carregarQuiz() {
+    const qArea = document.getElementById('pergunta');
+    const aArea = document.getElementById('alternativas');
+    const item = perguntas[perguntaAtual];
+
+    qArea.innerText = item.q;
+    aArea.innerHTML = ''; // Limpa botões antigos
+
+    item.options.forEach((opt, index) => {
+        const btn = document.createElement('button');
+        btn.innerText = opt;
+        btn.onclick = () => verificarResposta(index);
+        aArea.appendChild(btn);
     });
+}
 
-    // 2. Animação de Entrada (Scroll Reveal)
-    const observerOptions = { threshold: 0.1 };
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
-            }
-        });
-    }, observerOptions);
+function verificarResposta(index) {
+    const feedback = document.getElementById('quiz-feedback');
+    feedback.classList.remove('hidden');
+    
+    if(index === perguntas[perguntaAtual].answer) {
+        feedback.innerText = "✅ Correto! Você entende de sustentabilidade.";
+        feedback.style.color = "green";
+    } else {
+        feedback.innerText = "❌ Ops! Tente novamente.";
+        feedback.style.color = "red";
+    }
+    
+    // Avança após 2 segundos
+    setTimeout(() => {
+        perguntaAtual = (perguntaAtual + 1) % perguntas.length;
+        feedback.classList.add('hidden');
+        carregarQuiz();
+    }, 2000);
+}
 
-    document.querySelectorAll('.card').forEach(card => {
-        card.style.opacity = "0";
-        card.style.transform = "translateY(30px)";
-        card.style.transition = "all 0.6s ease-out";
-        observer.observe(card);
-    });
-
-    // 3. Saudação Inteligente
-    const btnGreet = document.getElementById('btn-greet');
-    btnGreet.addEventListener('click', () => {
-        const name = document.getElementById('user-name').value;
-        const welcomeText = document.getElementById('welcome-text');
-        if(name.trim() !== "") {
-            welcomeText.innerHTML = `Olá, <strong>${name}</strong>! 🌱<br>Bem-vindo à nova era do campo.`;
-            welcomeText.classList.add('pulse-animation');
-        }
+// Interação do Cenário
+document.querySelectorAll('.ponto-interesse').forEach(ponto => {
+    ponto.addEventListener('click', () => {
+        const info = ponto.getAttribute('data-info');
+        document.getElementById('info-text').innerHTML = `<strong>Dica:</strong> ${info}`;
     });
 });
+
+// Iniciar ao carregar
+window.onload = carregarQuiz;
