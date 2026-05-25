@@ -1,3 +1,167 @@
-/* Cenário Interativo */
-#mapa-interativo {
-    background: #aed581;
+:root {
+    --primary: #003366; /* Azul Metálico */
+    --accent-blue: #00b4d8; /* Azul Celeste */
+    --green: #2d6a4f;
+    --gold: #d4af37;
+    --white: #ffffff;
+    --black: #0d1117;
+    --gray: #f4f4f9;
+    --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --radius: 12px;
+    --shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Base e Acessibilidade */
+* { margin: 0; padding: 0; box-box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { 
+    font-family: var(--font-main); 
+    background-color: var(--white); 
+    color: var(--black);
+    transition: background 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    --white: #0d1117;
+    --black: #f0f6fc;
+    --gray: #161b22;
+    --shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+
+/* Barra de Acessibilidade */
+.accessibility-bar {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 2000;
+    background: var(--primary);
+    padding: 10px;
+    border-radius: 50px;
+    box-shadow: var(--shadow);
+}
+
+.accessibility-bar button {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: var(--white);
+    color: var(--primary);
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+/* Header & Hero */
+header { padding: 20px 0; border-bottom: 1px solid rgba(0,0,0,0.1); }
+.logo { font-weight: 800; font-size: 1.5rem; color: var(--primary); }
+.logo span { color: var(--green); }
+
+.hero {
+    height: 60vh;
+    background: linear-gradient(135deg, var(--primary), var(--accent-blue));
+    color: white;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 0 10%;
+}
+
+.hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; }
+.hero p { font-size: 1.2rem; opacity: 0.9; max-width: 800px; margin: 0 auto 2rem; }
+
+.btn-primary {
+    background: var(--gold);
+    color: var(--black);
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s;
+    display: inline-block;
+}
+
+/* Grid Layout */
+.layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 40px;
+    margin-top: -50px;
+}
+
+/* Imagens */
+.imagem {
+    margin: 30px 0;
+    overflow: hidden;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+.imagem img {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s ease;
+}
+.imagem:hover img { transform: scale(1.05); }
+
+/* Conteúdo e Accordion */
+.content-area {
+    background: var(--white);
+    padding: 40px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.accordion-item { margin-bottom: 10px; border-radius: var(--radius); overflow: hidden; background: var(--gray); }
+.accordion-header {
+    width: 100%; padding: 20px; text-align: left;
+    background: none; border: none; font-size: 1.1rem;
+    font-weight: bold; cursor: pointer; display: flex;
+    justify-content: space-between; align-items: center;
+    color: var(--primary);
+}
+
+.accordion-body { padding: 0 20px; max-height: 0; overflow: hidden; transition: 0.3s ease-out; }
+.accordion-item.active .accordion-body { padding-bottom: 20px; max-height: 200px; }
+
+/* Sidebar e Formulário */
+.form-container {
+    background: var(--primary);
+    color: white;
+    padding: 30px;
+    border-radius: var(--radius);
+    position: sticky;
+    top: 100px;
+}
+
+input {
+    width: 100%; padding: 12px; margin: 10px 0;
+    border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.1); color: white;
+}
+
+.btn-submit {
+    width: 100%; padding: 15px; background: var(--gold);
+    border: none; border-radius: 8px; font-weight: bold; cursor: pointer;
+}
+
+/* Footer */
+.main-footer {
+    background: var(--black);
+    color: white;
+    padding: 60px 0;
+    margin-top: 80px;
+    text-align: center;
+}
+
+.branding { margin-top: 20px; color: var(--accent-blue); }
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .layout-grid { grid-template-columns: 1fr; }
+    .accessibility-bar { top: auto; bottom: 20px; left: 50%; transform: translateX(-50%); flex-direction: row; }
+}
