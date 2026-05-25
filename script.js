@@ -1,41 +1,42 @@
-// Seleção de elementos do DOM
-const btnGreet = document.getElementById('btn-greet');
-const inputName = document.getElementById('user-name');
-const welcomeText = document.getElementById('welcome-text');
-const themeToggle = document.getElementById('theme-toggle');
-const contactForm = document.getElementById('contact-form');
-const feedback = document.getElementById('form-feedback');
+document.addEventListener('DOMContentLoaded', () => {
+    // Inicializa os ícones
+    lucide.createIcons();
 
-// 1. Função para personalizar saudação (Uso de variáveis e Manipulação de Texto)
-btnGreet.addEventListener('click', () => {
-    const name = inputName.value.trim();
-    if (name) {
-        welcomeText.innerText = `Olá, ${name}! Vamos cultivar o amanhã?`;
-        inputName.style.display = 'none';
-        btnGreet.innerText = 'Nome Registrado!';
-    } else {
-        alert("Por favor, insira um nome para personalizar.");
-    }
-});
+    // 1. Dark Mode com persistência
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        themeToggle.innerHTML = isDark ? '☀️' : '🌓';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
 
-// 2. Função para Alternar Modo Escuro (Melhoria de UX)
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    // Armazena a preferência no console ou variável lógica
-    const isDark = document.body.classList.contains('dark-mode');
-    console.log(`Modo escuro ativado: ${isDark}`);
-});
+    // 2. Animação de Entrada (Scroll Reveal)
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+            }
+        });
+    }, observerOptions);
 
-// 3. Validação de Formulário Semântico
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault(); // Evita o recarregamento da página
-    const emailValue = document.getElementById('email').value;
-    
-    // Processamento simples antes de exibir
-    if(emailValue.includes('@')) {
-        feedback.innerText = "Obrigado pelo interesse! Nossa equipe sustentável entrará em contato.";
-        feedback.classList.remove('hidden');
-        feedback.style.color = "var(--primary-green)";
-        contactForm.reset();
-    }
+    document.querySelectorAll('.card').forEach(card => {
+        card.style.opacity = "0";
+        card.style.transform = "translateY(30px)";
+        card.style.transition = "all 0.6s ease-out";
+        observer.observe(card);
+    });
+
+    // 3. Saudação Inteligente
+    const btnGreet = document.getElementById('btn-greet');
+    btnGreet.addEventListener('click', () => {
+        const name = document.getElementById('user-name').value;
+        const welcomeText = document.getElementById('welcome-text');
+        if(name.trim() !== "") {
+            welcomeText.innerHTML = `Olá, <strong>${name}</strong>! 🌱<br>Bem-vindo à nova era do campo.`;
+            welcomeText.classList.add('pulse-animation');
+        }
+    });
 });
