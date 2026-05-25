@@ -1,64 +1,24 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agro Forte: Futuro Sustentável</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    <header>
-        <nav id="main-nav">
-            <div class="logo">Agro<span>Sustentável</span></div>
-            <ul class="nav-links">
-                <li><a href="#home">Início</a></li>
-                <li><a href="#sobre">Equilíbrio</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-            <button id="theme-toggle" aria-label="Alternar modo escuro">🌓</button>
-        </nav>
-    </header>
+<script src="https://unpkg.com/lucide@latest"></script>
 
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1 id="welcome-text">Produção e Natureza em Harmonia</h1>
-                <p>O futuro do campo depende do equilíbrio tecnológico e ambiental.</p>
-                <div class="user-action">
-                    <input type="text" id="user-name" placeholder="Digite seu nome">
-                    <button id="btn-greet">Personalizar Experiência</button>
-                </div>
-            </div>
-        </section>
+<section id="sobre" class="info-cards">
+    <div class="card" data-tilt>
+        <div class="icon-box"><i data-lucide="cpu"></i></div>
+        <h3>Tecnologia Verde</h3>
+        <p>Sensores de umidade e drones reduzem o desperdício em até 30%.</p>
+        <span class="badge">Inovação</span>
+    </div>
+    
+    <div class="card" data-tilt>
+        <div class="icon-box"><i data-lucide="sprout"></i></div>
+        <h3>Recuperação</h3>
+        <p>Técnicas de plantio direto que regeneram a microbiota do solo.</p>
+        <span class="badge">Sustentável</span>
+    </div>
 
-        <section id="sobre" class="info-cards">
-            <div class="card" id="card-1">
-                <h3>Tecnologia Verde</h3>
-                <p>Uso de drones e IA para reduzir o desperdício de insumos.</p>
-            </div>
-            <div class="card" id="card-2">
-                <h3>Recuperação</h3>
-                <p>Plantio direto e rotação de culturas preservando o solo.</p>
-            </div>
-        </section>
-
-        <section id="contato">
-            <h2>Fale com um Especialista</h2>
-            <form id="contact-form">
-                <div class="form-group">
-                    <label for="email">E-mail:</label>
-                    <input type="email" id="email" required>
-                </div>
-                <button type="submit" class="btn-submit">Enviar Interesse</button>
-            </form>
-            <p id="form-feedback" class="hidden"></p>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Projeto Agrinho - Desenvolvido com foco em Sustentabilidade.</p>
-    </footer>
-
-    <script src="assets/js/script.js"></script>
-</body>
-</html>
+    <div class="card" data-tilt>
+        <div class="icon-box"><i data-lucide="droplets"></i></div>
+        <h3>Gestão Hídrica</h3>
+        <p>Sistemas de irrigação de precisão controlados via smartphone.</p>
+        <span class="badge">Vital</span>
+    </div>
+</section>
