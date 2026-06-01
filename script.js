@@ -1,56 +1,55 @@
-// Banco de dados técnico para manipulação do DOM
-const agroData = {
-    roca: {
-        title: "Infraestrutura da Roça Moderna",
-        text: "Integração de sensores IoT em hortas familiares para economia de 40% de água."
-    },
-    animais: {
-        title: "Pecuária de Precisão",
-        text: "Sistemas de rastreamento que garantem que o animal foi criado em áreas sem desmatamento."
-    },
-    plantio: {
-        title: "Plantio Regenerativo",
-        text: "Uso de rotação de cultura para manter o solo rico em nitrogênio sem fertilizantes químicos."
+// 1. Controle de Acessibilidade: Tamanho da Fonte
+let currentFontSize = 16;
+function changeFontSize(delta) {
+    currentFontSize += delta;
+    // Limita o tamanho para não quebrar o layout
+    if (currentFontSize >= 12 && currentFontSize <= 24) {
+        document.documentElement.style.setProperty('--font-base', currentFontSize + 'px');
     }
-};
+}
 
-// 1. Variável de Processamento (Personalização)
-function personalizarPainel() {
-    const nomeOriginal = document.getElementById('user-name').value;
-    const tituloDisplay = document.getElementById('main-title');
+// 2. Sistema de Abas (Tabs) - Manipulação de Classes no DOM
+function openTab(evt, tabName) {
+    let i, tabcontent, tablinks;
     
-    if(nomeOriginal.trim() !== "") {
-        // Processa a informação antes de exibir
-        const nomeFormatado = nomeOriginal.toUpperCase();
-        tituloDisplay.innerText = `Painel AgroForte: Consultor ${nomeFormatado}`;
-        tituloDisplay.style.color = "#95d5b2";
+    // Esconde todos os conteúdos
+    tabcontent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+        tabcontent[i].classList.remove("active");
     }
+
+    // Remove a classe 'active' de todos os botões
+    tablinks = document.getElementsByClassName("tab-link");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+    }
+
+    // Mostra a aba atual e adiciona classe ativa ao botão
+    document.getElementById(tabName).style.display = "block";
+    document.getElementById(tabName).classList.add("active");
+    evt.currentTarget.classList.add("active");
 }
 
-// 2. Manipulação Funcional do DOM (Exibir/Esconder)
-function showInfo(categoria) {
-    const painel = document.getElementById('info-display');
-    const conteudo = document.getElementById('info-content');
-    const dados = agroData[categoria];
-
-    conteudo.innerHTML = `<h3>${dados.title}</h3><p>${dados.text}</p>`;
-    painel.classList.remove('hidden');
-    painel.style.display = "block"; // Altera o display via JS
+// 3. Atualização Dinâmica de Dados (Simulação de Sensores IoT)
+function updateStats() {
+    const carbon = document.getElementById('carbon-stat');
+    const fill = document.getElementById('carbon-fill');
+    
+    // Gera um valor aleatório para simular monitoramento real
+    let newValue = Math.floor(Math.random() * (98 - 90 + 1)) + 90;
+    
+    carbon.innerText = newValue;
+    fill.style.width = newValue + "%";
 }
 
-function closePanel() {
-    document.getElementById('info-display').style.display = "none";
-}
+// Atualiza os dados a cada 5 segundos
+setInterval(updateStats, 5000);
 
-// 3. Atualizador de Contador (Simulação de Impacto)
-let visitas = 0;
-setInterval(() => {
-    visitas += Math.floor(Math.random() * 5);
-    document.getElementById('counter').innerText = visitas;
-}, 3000);
-
-// 4. Modo Escuro Funcional
-const btnMode = document.getElementById('mode-toggle');
-btnMode.addEventListener('click', () => {
+// 4. Modo Escuro
+document.getElementById('mode-toggle').addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
+    // Armazena a preferência em uma variável (processamento)
+    const isDark = document.body.classList.contains('dark-mode');
+    console.log(`Modo escuro ativo: ${isDark}`);
 });
