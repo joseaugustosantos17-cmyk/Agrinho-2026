@@ -1,102 +1,80 @@
-/* Variáveis de Cores */
 :root {
-    --verde-roca: #2d5a27;
-    --terra: #8b4513;
-    --fundo-claro: #f9fbe7;
-    --texto-escuro: #1b3022;
-    --transicao: all 0.3s ease;
+    --primary: #1b4332;
+    --accent: #74c69d;
+    --bg-light: #f8f9fa;
+    --text-dark: #212529;
+    --glass: rgba(255, 255, 255, 0.9);
 }
 
-/* Modo Escuro */
 body.dark-mode {
-    --verde-roca: #4ade80;
-    --fundo-claro: #1a1a1a;
-    --texto-escuro: #f0f0f0;
-    background-color: #121212;
+    --primary: #95d5b2;
+    --bg-light: #081c15;
+    --text-dark: #f8f9fa;
+    --glass: rgba(27, 67, 50, 0.9);
 }
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: 'Trebuchet MS', sans-serif;
-    background-color: var(--fundo-claro);
-    color: var(--texto-escuro);
-    transition: var(--transicao);
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    transition: all 0.4s ease;
 }
 
-/* Navegação */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 5%;
-    background-color: var(--verde-roca);
-    color: white;
+.container { width: 90%; max-width: 1200px; margin: auto; }
+
+/* Header Minimalista */
+#main-header {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0; z-index: 100;
 }
 
-.nav-menu { list-style: none; display: flex; gap: 20px; align-items: center; }
-.nav-menu a { color: white; text-decoration: none; font-weight: bold; }
+nav { display: flex; justify-content: space-between; padding: 1.5rem 0; }
 
-/* Grid de Fotos */
-.grid-roca {
+/* Grid Estilo "Bento Box" (Moderno) */
+.bento-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    padding: 40px 5%;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 3rem 0;
 }
 
-.card {
+.feature-card {
     background: white;
-    border-radius: 15px;
+    border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: var(--transicao);
-    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.card:hover {
-    transform: scale(1.05);
-    border: 2px solid var(--verde-roca);
-}
+.feature-card:hover { transform: translateY(-10px); }
 
-.foto-item {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-}
+.card-image { height: 250px; background-color: #ddd; background-size: cover; background-position: center; }
 
-/* Painel Explicativo (Modal) */
-.painel {
+/* Efeito de Vidro no Modal */
+.modal {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 0 50px rgba(0,0,0,0.5);
-    z-index: 2000;
-    max-width: 90%;
-    width: 500px;
-    border-left: 10px solid var(--verde-roca);
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center; justify-content: center;
+    z-index: 1000;
 }
 
-.painel.hidden { display: none; }
+.modal.hidden { display: none; }
 
-.btn-fechar {
-    float: right;
-    border: none;
-    background: #ff4444;
-    color: white;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
+.modal-body {
+    background: var(--bg-light);
+    padding: 3rem;
+    border-radius: 16px;
+    max-width: 600px;
+    position: relative;
 }
 
 /* Responsividade */
-@media (max-width: 600px) {
-    .nav-menu { display: none; }
-    .hero h1 { font-size: 1.5rem; }
+@media (max-width: 768px) {
+    .nav-links { display: none; }
 }
