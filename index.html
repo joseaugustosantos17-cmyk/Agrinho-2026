@@ -1,79 +1,71 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agricultura da Roça - Sabor e Tradição</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Agro Forte: Futuro Sustentável</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="cabecalho">
-        <div class="logo">
-            <h1>Colheita da Roça</h1>
-        </div>
-        <nav class="navegacao">
-            <a href="#nossa-terra">Nossa Terra</a>
-            <a href="#produtos">Da Horta</a>
-            <a href="#contato">Fale Conosco</a>
-            <div class="controles-ux">
-                <button id="btn-fonte" class="btn-ux">A+</button>
-                <button id="btn-tema" class="btn-ux">🌙 Noite na Roça</button>
-            </div>
+    <header>
+        <nav>
+            <div class="logo">RoçaSustentável</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <button id="theme-toggle">Alternar Modo</button>
         </nav>
     </header>
 
     <main>
-        <section id="nossa-terra" class="hero">
-            <div class="filtro-texto">
-                <h2>O sabor que vem direto do quintal</h2>
-                <p>Valorizamos o pequeno produtor, as sementes crioulas e o tempo da natureza. Na roça, a gente planta com carinho para colher saúde.</p>
-            </div>
-        </section>
-
-        <section id="produtos" class="sessao-cards">
-            <h2>Saberes do Campo</h2>
-            <div class="container-cards">
-                <article class="card">
-                    <span class="emoji">🌽</span>
-                    <h3>Sementes Crioulas</h3>
-                    <p>Preservamos variedades que passam de pai para filho, garantindo a biodiversidade e a história do nosso povo.</p>
-                </article>
-                <article class="card">
-                    <span class="emoji">🥬</span>
-                    <h3>Horta Orgânica</h3>
-                    <p>Sem veneno e com muito adubo natural. Respeitamos o solo para que ele nos dê o melhor alimento.</p>
-                </article>
-                <article class="card">
-                    <span class="emoji">🐓</span>
-                    <h3>Criação Livre</h3>
-                    <p>Respeito aos animais e ao ciclo da vida. Aqui, tudo é feito no tempo certo, com dignidade.</p>
-                </article>
-            </div>
-        </section>
-
-        <section id="contato" class="sessao-interativa">
-            <h2>Quer um pedaço da roça na sua mesa?</h2>
-            <p>Deixe seu nome e receba dicas de como apoiar a agricultura familiar.</p>
-            
-            <form id="form-roca" class="formulario">
-                <div class="campo-form">
-                    <label for="nome-usuario">Como podemos te chamar?</label>
-                    <input type="text" id="nome-usuario" placeholder="Ex: Maria Silva" required>
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h1 id="welcome-text">Bem-vindo à nossa Roça</h1>
+                <p>Onde a tradição do campo encontra a preservação do amanhã.</p>
+                <div class="user-action">
+                    <input type="text" id="user-name" placeholder="Digite seu nome">
+                    <button onclick="personalizarSaudacao()">Entrar no Site</button>
                 </div>
-                <button type="submit" class="btn-principal">Quero saber mais</button>
-            </form>
-
-            <div id="feedback-usuario" class="escondido">
-                <p id="texto-feedback"></p>
-                <button id="btn-limpar" class="btn-secundario">Voltar</button>
             </div>
+        </section>
+
+        <section id="galeria" class="gallery-section">
+            <h2>Nossa Produção</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=500" alt="Plantação verde">
+                    <p>Plantações Orgânicas</p>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=500" alt="Animais da fazenda">
+                    <p>Criação Humanizada</p>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=500" alt="Horta comunitária">
+                    <p>Solo Protegido</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="contact-section">
+            <form id="agro-form">
+                <h3>Fale com o Produtor</h3>
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" required>
+                <label for="msg">Mensagem:</label>
+                <textarea id="msg"></textarea>
+                <button type="submit" class="btn-submit">Enviar Interesse</button>
+            </form>
+            <div id="form-feedback" class="hidden">Obrigado pelo contato!</div>
         </section>
     </main>
 
-    <footer class="rodape">
-        <p>&copy; 2026 - Do campo para a tela. Orgulho de ser da roça.</p>
+    <footer>
+        <p>&copy; 2024 Agro Forte - Criado com foco na Sustentabilidade</p>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
