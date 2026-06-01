@@ -1,123 +1,79 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroFuturo 2026 | Tecnologia e Sustentabilidade</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>Agricultura da Roça - Sabor e Tradição</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-    <div class="accessibility-bar" role="complementary" aria-label="Ferramentas de acessibilidade">
-        <button id="increase-font" title="Aumentar Fonte">A+</button>
-        <button id="decrease-font" title="Diminuir Fonte">A-</button>
-        <button id="toggle-theme" title="Alternar Modo Escuro/Claro">🌓</button>
-        <button id="start-read" title="Iniciar Leitura por Voz">🔊</button>
-        <button id="stop-read" title="Parar Leitura">🚫</button>
-    </div>
-
-    <header>
-        <nav class="nav-container">
-            <div class="logo">AGRO<span>FUTURO</span></div>
+    <header class="cabecalho">
+        <div class="logo">
+            <h1>Colheita da Roça</h1>
+        </div>
+        <nav class="navegacao">
+            <a href="#nossa-terra">Nossa Terra</a>
+            <a href="#produtos">Da Horta</a>
+            <a href="#contato">Fale Conosco</a>
+            <div class="controles-ux">
+                <button id="btn-fonte" class="btn-ux">A+</button>
+                <button id="btn-tema" class="btn-ux">🌙 Noite na Roça</button>
+            </div>
         </nav>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Tecnologia agrícola reforça papel do Brasil</h1>
-            <p>O futuro do campo une produtividade, inovação e capacidade de adaptação global com Inteligência Artificial e Biotecnologia.</p>
-            <a href="#content" class="btn-primary">Explorar Inovação</a>
-        </div>
-    </section>
+    <main>
+        <section id="nossa-terra" class="hero">
+            <div class="filtro-texto">
+                <h2>O sabor que vem direto do quintal</h2>
+                <p>Valorizamos o pequeno produtor, as sementes crioulas e o tempo da natureza. Na roça, a gente planta com carinho para colher saúde.</p>
+            </div>
+        </section>
 
-    <main id="main-content" class="container">
-        <div class="layout-grid">
+        <section id="produtos" class="sessao-cards">
+            <h2>Saberes do Campo</h2>
+            <div class="container-cards">
+                <article class="card">
+                    <span class="emoji">🌽</span>
+                    <h3>Sementes Crioulas</h3>
+                    <p>Preservamos variedades que passam de pai para filho, garantindo a biodiversidade e a história do nosso povo.</p>
+                </article>
+                <article class="card">
+                    <span class="emoji">🥬</span>
+                    <h3>Horta Orgânica</h3>
+                    <p>Sem veneno e com muito adubo natural. Respeitamos o solo para que ele nos dê o melhor alimento.</p>
+                </article>
+                <article class="card">
+                    <span class="emoji">🐓</span>
+                    <h3>Criação Livre</h3>
+                    <p>Respeito aos animais e ao ciclo da vida. Aqui, tudo é feito no tempo certo, com dignidade.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="contato" class="sessao-interativa">
+            <h2>Quer um pedaço da roça na sua mesa?</h2>
+            <p>Deixe seu nome e receba dicas de como apoiar a agricultura familiar.</p>
             
-            <article class="content-area" id="read-target">
-                <section class="intro-text">
-                    <p>A agricultura sustentável ganha espaço no debate global. Segundo Luciana Gorab, o Brasil une produtividade e inovação para reduzir a dependência de fertilizantes químicos através de microrganismos, como o trabalho premiado da microbiologista Mariangela Hungria.</p>
-                    
-                    <div class="imagem"> <img src="Foto1.png" alt="Drone sobrevoando plantação tecnológica"> </div>
-                </section>
-
-                <section class="ia-benefits">
-                    <h2>Quais os principais benefícios da IA no campo?</h2>
-                    <p>A Inteligência Artificial permite a otimização de recursos finitos e aumenta a resiliência frente às adversidades climáticas.</p>
-                    
-                    <div class="accordion">
-                        <div class="accordion-item">
-                            <button class="accordion-header">1. Otimização de Recursos <i data-lucide="chevron-down"></i></button>
-                            <div class="accordion-body">
-                                <p>Sistemas de irrigação inteligentes e sensores monitoram o solo em tempo real, reduzindo o desperdício de água e insumos.</p>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button class="accordion-header">2. Monitoramento de Culturas <i data-lucide="chevron-down"></i></button>
-                            <div class="accordion-body">
-                                <p>Drones com sensores multiespectrais detectam pragas e falhas de plantio com precisão milimétrica.</p>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button class="accordion-header">3. Previsibilidade e Gestão de Riscos <i data-lucide="chevron-down"></i></button>
-                            <div class="accordion-body">
-                                <p>Análise de dados climáticos históricos para prever rendimentos e se antecipar a eventos extremos.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="imagem"> <img src="Foto2.png" alt="Gráficos de análise de dados agrícolas em tablet"> </div>
-
-                    <div class="extra-cards">
-                        <div class="info-card">
-                            <h3>Automação</h3>
-                            <p>Maquinários autônomos guiados por GPS reduzem custos operacionais.</p>
-                        </div>
-                        <div class="info-card">
-                            <h3>Qualidade</h3>
-                            <p>Rastreabilidade total do campo até a mesa do consumidor.</p>
-                        </div>
-                    </div>
-
-                    <div class="imagem"> <img src="Foto3.png" alt="Maquinário autônomo em operação noturna tecnológica"> </div>
-                </section>
-
-                <section class="comments-section">
-                    <h3>Interação com o Leitor</h3>
-                    <div class="comment-box">
-                        <textarea id="user-comment" placeholder="O que você pensa sobre a IA no campo?"></textarea>
-                        <button id="send-comment">Enviar Comentário</button>
-                    </div>
-                    <div id="comments-display"></div>
-                </section>
-            </article>
-
-            <aside class="sidebar">
-                <div class="form-container">
-                    <h3>Venha conhecer melhor como a IA pode ser uma aliada do Campo.</h3>
-                    <p>Inscreva-se no nosso seminário on-line.</p>
-                    <form id="signup-form">
-                        <input type="text" placeholder="Nome Completo" required>
-                        <input type="email" placeholder="E-mail" required>
-                        <input type="text" placeholder="Cidade" required>
-                        <div class="form-row">
-                            <input type="text" placeholder="Estado" required>
-                            <input type="text" placeholder="País" required>
-                        </div>
-                        <button type="submit" class="btn-submit">Inscrever-se Agora</button>
-                    </form>
+            <form id="form-roca" class="formulario">
+                <div class="campo-form">
+                    <label for="nome-usuario">Como podemos te chamar?</label>
+                    <input type="text" id="nome-usuario" placeholder="Ex: Maria Silva" required>
                 </div>
-            </aside>
-        </div>
+                <button type="submit" class="btn-principal">Quero saber mais</button>
+            </form>
+
+            <div id="feedback-usuario" class="escondido">
+                <p id="texto-feedback"></p>
+                <button id="btn-limpar" class="btn-secundario">Voltar</button>
+            </div>
+        </section>
     </main>
 
-    <footer class="main-footer">
-        <div class="container">
-            <p><strong>Referências:</strong> BemAgro, Agrolink (Nobel da Agricultura/Hungria).</p>
-            <p class="branding">AgroFuturo 2026 ° Conectando a inteligência tecnológica à terra de forma sustentável</p>
-        </div>
+    <footer class="rodape">
+        <p>&copy; 2026 - Do campo para a tela. Orgulho de ser da roça.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
