@@ -1,47 +1,56 @@
-// Dados que serão injetados ao clicar na foto
-const dataExpert = {
+// Banco de dados técnico para manipulação do DOM
+const agroData = {
     roca: {
-        title: "Gestão de Solo Sustentável",
-        content: "Técnicas de plantio direto e adubação orgânica para manter a vitalidade da terra."
+        title: "Infraestrutura da Roça Moderna",
+        text: "Integração de sensores IoT em hortas familiares para economia de 40% de água."
     },
     animais: {
-        title: "Pecuária Consciente",
-        content: "Criação humanizada com foco no equilíbrio do ecossistema e saúde animal."
+        title: "Pecuária de Precisão",
+        text: "Sistemas de rastreamento que garantem que o animal foi criado em áreas sem desmatamento."
     },
-    plantacoes: {
-        title: "Culturas Diversificadas",
-        content: "Uso de rotação de culturas para evitar pragas e enriquecer o solo naturalmente."
+    plantio: {
+        title: "Plantio Regenerativo",
+        text: "Uso de rotação de cultura para manter o solo rico em nitrogênio sem fertilizantes químicos."
     }
 };
 
-// Função de Boas-vindas
-function initExperience() {
-    const input = document.getElementById('user-input');
-    const headline = document.getElementById('headline');
+// 1. Variável de Processamento (Personalização)
+function personalizarPainel() {
+    const nomeOriginal = document.getElementById('user-name').value;
+    const tituloDisplay = document.getElementById('main-title');
     
-    if (input.value.trim() !== "") {
-        headline.textContent = `Bem-vindo ao Painel, ${input.value}!`;
-        input.style.display = 'none';
-        document.getElementById('btn-start').style.display = 'none';
+    if(nomeOriginal.trim() !== "") {
+        // Processa a informação antes de exibir
+        const nomeFormatado = nomeOriginal.toUpperCase();
+        tituloDisplay.innerText = `Painel AgroForte: Consultor ${nomeFormatado}`;
+        tituloDisplay.style.color = "#95d5b2";
     }
 }
 
-// Abrir Modal com informação da foto
-function openDetails(id) {
-    const modal = document.getElementById('info-modal');
-    const text = document.getElementById('modal-text');
-    const info = dataExpert[id];
-    
-    text.innerHTML = `<h2>${info.title}</h2><p>${info.content}</p>`;
-    modal.classList.remove('hidden');
+// 2. Manipulação Funcional do DOM (Exibir/Esconder)
+function showInfo(categoria) {
+    const painel = document.getElementById('info-display');
+    const conteudo = document.getElementById('info-content');
+    const dados = agroData[categoria];
+
+    conteudo.innerHTML = `<h3>${dados.title}</h3><p>${dados.text}</p>`;
+    painel.classList.remove('hidden');
+    painel.style.display = "block"; // Altera o display via JS
 }
 
-// Fechar Modal
-function closeDetails() {
-    document.getElementById('info-modal').classList.add('hidden');
+function closePanel() {
+    document.getElementById('info-display').style.display = "none";
 }
 
-// Alternar Modo Escuro
-document.getElementById('theme-switch').addEventListener('click', () => {
+// 3. Atualizador de Contador (Simulação de Impacto)
+let visitas = 0;
+setInterval(() => {
+    visitas += Math.floor(Math.random() * 5);
+    document.getElementById('counter').innerText = visitas;
+}, 3000);
+
+// 4. Modo Escuro Funcional
+const btnMode = document.getElementById('mode-toggle');
+btnMode.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
 });
