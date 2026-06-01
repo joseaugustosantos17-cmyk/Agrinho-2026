@@ -3,42 +3,49 @@
     --accent: #74c69d;
     --bg-light: #f8f9fa;
     --text-dark: #212529;
-    --glass: rgba(255, 255, 255, 0.9);
 }
 
 body.dark-mode {
-    --primary: #95d5b2;
     --bg-light: #081c15;
     --text-dark: #f8f9fa;
-    --glass: rgba(27, 67, 50, 0.9);
+    --primary: #95d5b2;
 }
 
 body {
-    font-family: 'Inter', -apple-system, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     background: var(--bg-light);
     color: var(--text-dark);
-    transition: all 0.4s ease;
+    margin: 0;
+    transition: 0.3s;
 }
 
 .container { width: 90%; max-width: 1200px; margin: auto; }
 
-/* Header Minimalista */
-#main-header {
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0; z-index: 100;
+header {
+    background: var(--primary);
+    color: white;
+    padding: 1rem 0;
 }
 
-nav { display: flex; justify-content: space-between; padding: 1.5rem 0; }
+nav { display: flex; justify-content: space-between; align-items: center; }
 
-/* Grid Estilo "Bento Box" (Moderno) */
+.nav-links { list-style: none; display: flex; gap: 20px; }
+
+.hero-business {
+    height: 400px;
+    background: #2d6a4f;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
 .bento-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 3rem 0;
+    gap: 20px;
+    padding: 40px 0;
 }
 
 .feature-card {
@@ -46,35 +53,44 @@ nav { display: flex; justify-content: space-between; padding: 1.5rem 0; }
     border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    color: #333;
 }
 
-.feature-card:hover { transform: translateY(-10px); }
+.card-image { height: 200px; background-size: cover; background-position: center; background-color: #ccc; }
 
-.card-image { height: 250px; background-color: #ddd; background-size: cover; background-position: center; }
+.card-content { padding: 15px; }
 
-/* Efeito de Vidro no Modal */
+/* Modal */
 .modal {
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.8);
     display: flex;
-    align-items: center; justify-content: center;
+    align-items: center;
+    justify-content: center;
     z-index: 1000;
 }
 
 .modal.hidden { display: none; }
 
 .modal-body {
-    background: var(--bg-light);
-    padding: 3rem;
-    border-radius: 16px;
-    max-width: 600px;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 500px;
+    color: #333;
     position: relative;
 }
 
-/* Responsividade */
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
 @media (max-width: 768px) {
     .nav-links { display: none; }
 }
