@@ -3,68 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroForte | Sustentabilidade Profissional</title>
+    <title>AgroForte | Ecossistema Sustentável</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header id="main-header">
+    <div class="bg-overlay"></div>
+
+    <header>
         <nav class="container">
-            <div class="logo">AGRO<strong>FORTE</strong></div>
-            <ul class="nav-links">
-                <li><a href="#operacoes">Operações</a></li>
-                <li><button id="theme-switch">🌓 Alternar Tema</button></li>
+            <div class="logo">AGRO<span>FORTE</span></div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#pilares">Pilares</a></li>
+                <li><button id="mode-toggle" class="btn-icon">🌓</button></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section class="hero-business">
-            <div class="hero-overlay">
-                <h1 id="headline">Ecossistemas de Produção Consciente</h1>
-                <p>Otimizando resultados através da agricultura regenerativa.</p>
-                <div class="cta-box">
-                    <input type="text" id="user-input" placeholder="Digite seu nome">
-                    <button id="btn-start" onclick="initExperience()">Acessar Painel</button>
+        <section id="home" class="hero">
+            <div class="hero-content container">
+                <h1 id="main-title">Futuro Sustentável: O Equilíbrio Necessário</h1>
+                <p>Tecnologia e respeito à terra unidos para alimentar o mundo.</p>
+                
+                <div class="user-access glass">
+                    <label for="user-name">Inicie sua consultoria:</label>
+                    <div class="input-group">
+                        <input type="text" id="user-name" placeholder="Seu nome profissional">
+                        <button onclick="personalizarPainel()" class="btn-main">Acessar Sistema</button>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="operacoes" class="container">
-            <h2 class="section-title">Pilares da Unidade Produtiva</h2>
-            <div class="bento-grid">
-                <article class="feature-card" onclick="openDetails('roca')">
-                    <div class="card-image" style="background-image: url('assets/img/roca.jpg');"></div>
-                    <div class="card-content">
-                        <h3>Gestão de Solo</h3>
-                        <p>Clique para detalhes técnicos.</p>
+        <section id="pilares" class="container">
+            <h2 class="section-label">Nossas Operações</h2>
+            <div class="grid-cards">
+                <article class="card" onclick="showInfo('roca')">
+                    <div class="card-img roca-bg"></div>
+                    <div class="card-body">
+                        <h3>A Roça Moderna</h3>
+                        <p>Gestão familiar com precisão técnica.</p>
                     </div>
                 </article>
 
-                <article class="feature-card" onclick="openDetails('animais')">
-                    <div class="card-image" style="background-image: url('assets/img/animais.jpg');"></div>
-                    <div class="card-content">
-                        <h3>Pecuária Regenerativa</h3>
-                        <p>Clique para detalhes técnicos.</p>
+                <article class="card" onclick="showInfo('animais')">
+                    <div class="card-img animais-bg"></div>
+                    <div class="card-body">
+                        <h3>Pecuária Consciente</h3>
+                        <p>Bem-estar e ciclo de carbono neutro.</p>
                     </div>
                 </article>
 
-                <article class="feature-card" onclick="openDetails('plantacoes')">
-                    <div class="card-image" style="background-image: url('assets/img/plantio.jpg');"></div>
-                    <div class="card-content">
-                        <h3>Fitotecnia Avançada</h3>
-                        <p>Clique para detalhes técnicos.</p>
+                <article class="card" onclick="showInfo('plantio')">
+                    <div class="card-img plantio-bg"></div>
+                    <div class="card-body">
+                        <h3>Culturas Regenerativas</h3>
+                        <p>Solo vivo e biodiversidade preservada.</p>
                     </div>
                 </article>
             </div>
 
-            <div id="info-modal" class="modal hidden">
-                <div class="modal-body">
-                    <span class="close-modal" onclick="closeDetails()">&times;</span>
-                    <div id="modal-text"></div>
-                </div>
+            <div id="info-display" class="info-panel hidden glass">
+                <button class="close-btn" onclick="closePanel()">✕</button>
+                <div id="info-content"></div>
             </div>
         </section>
     </main>
+
+    <footer>
+        <p>&copy; 2026 AgroForte Solutions | <span id="counter">0</span> Visualizações de Impacto</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
