@@ -3,74 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agro Forte: Do Campo ao Futuro</title>
-    <link rel="stylesheet" href="style.css">
+    <title>AgroSustentável | Inovação e Equilíbrio</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">🌿 Roça Sustentável</div>
-            <ul class="nav-menu">
-                <li><a href="#galeria">Nossa Roça</a></li>
-                <li><button id="btn-dark-mode">Alternar Tema</button></li>
+    <header id="main-header">
+        <nav class="container">
+            <div class="logo">AGRO<strong>FORTE</strong></div>
+            <ul class="nav-links">
+                <li><a href="#diretrizes">Diretrizes</a></li>
+                <li><a href="#operacoes">Operações</a></li>
+                <li><button id="theme-switch" title="Alternar Visão">🌓</button></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section class="hero">
-            <h1 id="titulo-principal">Agricultura da Roça</h1>
-            <p>Equilíbrio real entre a produção familiar e o respeito à natureza.</p>
-            <div class="boas-vindas">
-                <input type="text" id="input-nome" placeholder="Seu nome">
-                <button onclick="saudarUsuario()">Conhecer a Roça</button>
-            </div>
-            <p id="mensagem-personalizada"></p>
-        </section>
-
-        <section id="galeria" class="galeria-container">
-            <h2>Clique nas imagens para aprender sobre cada função:</h2>
-            
-            <div class="grid-roca">
-                <div class="card" onclick="exibirDetalhes('roca')">
-                    <img src="assets/img/roca.jpg" alt="Foto da Roça" class="foto-item">
-                    <h3>A Roça</h3>
+        <section class="hero-business">
+            <div class="hero-overlay">
+                <h1 id="headline">Ecossistemas de Produção Consciente</h1>
+                <p>Otimizando resultados através da agricultura regenerativa.</p>
+                <div class="cta-box">
+                    <input type="text" id="user-input" placeholder="Identifique-se para acesso">
+                    <button id="btn-start" onclick="initExperience()">Acessar Painel</button>
                 </div>
-
-                <div class="card" onclick="exibirDetalhes('animais')">
-                    <img src="assets/img/animais.jpg" alt="Animais da Fazenda" class="foto-item">
-                    <h3>Criação de Animais</h3>
-                </div>
-
-                <div class="card" onclick="exibirDetalhes('plantacoes')">
-                    <img src="assets/img/plantacao.jpg" alt="Plantações Diversas" class="foto-item">
-                    <h3>Nossas Plantações</h3>
-                </div>
-            </div>
-
-            <div id="painel-explicativo" class="painel hidden">
-                <button class="btn-fechar" onclick="fecharPainel()">X</button>
-                <div id="conteudo-texto"></div>
             </div>
         </section>
 
-        <section class="contato">
-            <form id="form-agrinho">
-                <h3>Interesse em Sustentabilidade?</h3>
-                <label for="nome-contato">Nome:</label>
-                <input type="text" id="nome-contato" required>
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" required>
-                <button type="submit">Enviar Mensagem</button>
-            </form>
-            <p id="feedback-form" class="hidden">Mensagem enviada com sucesso!</p>
+        <section id="operacoes" class="container">
+            <h2 class="section-title">Pilares da Unidade Produtiva</h2>
+            <div class="bento-grid">
+                <article class="feature-card" onclick="openDetails('roca')">
+                    <div class="card-image roca"></div>
+                    <div class="card-content">
+                        <h3>Gestão de Solo</h3>
+                        <p>Integração sistêmica e preservação de biomas.</p>
+                    </div>
+                </article>
+
+                <article class="feature-card" onclick="openDetails('animais')">
+                    <div class="card-image animais"></div>
+                    <div class="card-content">
+                        <h3>Pecuária Regenerativa</h3>
+                        <p>Bem-estar animal e ciclo de carbono neutro.</p>
+                    </div>
+                </article>
+
+                <article class="feature-card" onclick="openDetails('plantacoes')">
+                    <div class="card-image plantio"></div>
+                    <div class="card-content">
+                        <h3>Fitotecnia Avançada</h3>
+                        <p>Produção diversificada e segurança alimentar.</p>
+                    </div>
+                </article>
+            </div>
+
+            <div id="info-modal" class="modal hidden">
+                <div class="modal-body">
+                    <span class="close-modal" onclick="closeDetails()">&times;</span>
+                    <div id="modal-text"></div>
+                </div>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Projeto Agrinho - Agro Forte e Sustentável</p>
+        <p>&copy; 2026 AgroForte Sustainable Solutions. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
