@@ -3,77 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroForte | Ecossistema Sustentável</title>
+    <title>AgroForte | Inovação Sustentável</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="bg-overlay"></div>
+    <div class="background-parallax"></div>
 
-    <header>
+    <header class="glass-nav">
         <nav class="container">
             <div class="logo">AGRO<span>FORTE</span></div>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#pilares">Pilares</a></li>
-                <li><button id="mode-toggle" class="btn-icon">🌓</button></li>
-            </ul>
+            <div class="nav-actions">
+                <button id="font-up" onclick="changeFontSize(1)" title="Aumentar Fonte">A+</button>
+                <button id="font-down" onclick="changeFontSize(-1)" title="Diminuir Fonte">A-</button>
+                <button id="theme-toggle" class="btn-circle">🌓</button>
+            </div>
         </nav>
     </header>
 
     <main>
-        <section id="home" class="hero">
-            <div class="hero-content container">
-                <h1 id="main-title">Futuro Sustentável: O Equilíbrio Necessário</h1>
-                <p>Tecnologia e respeito à terra unidos para alimentar o mundo.</p>
-                
-                <div class="user-access glass">
-                    <label for="user-name">Inicie sua consultoria:</label>
-                    <div class="input-group">
-                        <input type="text" id="user-name" placeholder="Seu nome profissional">
-                        <button onclick="personalizarPainel()" class="btn-main">Acessar Sistema</button>
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <span class="badge">Tecnologia & Natureza</span>
+                    <h1 id="main-title">O Amanhã da Agricultura começa na Roça.</h1>
+                    <p>Conectando o saber tradicional à inteligência sustentável para um mundo em equilíbrio.</p>
+                    
+                    <div class="login-box glass">
+                        <input type="text" id="user-name" placeholder="Insira seu nome de acesso">
+                        <button onclick="ativarPainel()" class="btn-glow">Iniciar Tour Virtual</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="pilares" class="container">
-            <h2 class="section-label">Nossas Operações</h2>
-            <div class="grid-cards">
-                <article class="card" onclick="showInfo('roca')">
-                    <div class="card-img roca-bg"></div>
-                    <div class="card-body">
-                        <h3>A Roça Moderna</h3>
-                        <p>Gestão familiar com precisão técnica.</p>
-                    </div>
-                </article>
-
-                <article class="card" onclick="showInfo('animais')">
-                    <div class="card-img animais-bg"></div>
-                    <div class="card-body">
-                        <h3>Pecuária Consciente</h3>
-                        <p>Bem-estar e ciclo de carbono neutro.</p>
-                    </div>
-                </article>
-
-                <article class="card" onclick="showInfo('plantio')">
-                    <div class="card-img plantio-bg"></div>
-                    <div class="card-body">
-                        <h3>Culturas Regenerativas</h3>
-                        <p>Solo vivo e biodiversidade preservada.</p>
-                    </div>
-                </article>
+        <section id="features" class="container">
+            <div class="stats-bar glass">
+                <div class="stat-item"><strong>+25%</strong><span>Produtividade</span></div>
+                <div class="stat-item"><strong>-40%</strong><span>Uso de Água</span></div>
+                <div class="stat-item"><strong>100%</strong><span>Sustentável</span></div>
             </div>
 
-            <div id="info-display" class="info-panel hidden glass">
-                <button class="close-btn" onclick="closePanel()">✕</button>
-                <div id="info-content"></div>
+            <div class="grid-cards">
+                <div class="card" onclick="exibirInfo('roca')">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800');"></div>
+                    <div class="card-overlay">
+                        <h3>Gestão de Solo</h3>
+                        <span>Ver Detalhes →</span>
+                    </div>
+                </div>
+
+                <div class="card" onclick="exibirInfo('animais')">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=800');"></div>
+                    <div class="card-overlay">
+                        <h3>Bem-estar Animal</h3>
+                        <span>Ver Detalhes →</span>
+                    </div>
+                </div>
+
+                <div class="card" onclick="exibirInfo('plantio')">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=800');"></div>
+                    <div class="card-overlay">
+                        <h3>Plantações Inteligentes</h3>
+                        <span>Ver Detalhes →</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="side-panel" class="side-panel hidden glass">
+                <button class="close-btn" onclick="fecharPainel()">✕</button>
+                <div id="panel-content"></div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 AgroForte Solutions | <span id="counter">0</span> Visualizações de Impacto</p>
+    <footer class="glass">
+        <p>&copy; 2026 AgroForte | Desenvolvido para o Futuro do Campo</p>
     </footer>
 
     <script src="script.js"></script>
