@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroSustentável | Inovação e Equilíbrio</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>AgroForte | Sustentabilidade Profissional</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header id="main-header">
         <nav class="container">
             <div class="logo">AGRO<strong>FORTE</strong></div>
             <ul class="nav-links">
-                <li><a href="#diretrizes">Diretrizes</a></li>
                 <li><a href="#operacoes">Operações</a></li>
-                <li><button id="theme-switch" title="Alternar Visão">🌓</button></li>
+                <li><button id="theme-switch">🌓 Alternar Tema</button></li>
             </ul>
         </nav>
     </header>
@@ -24,7 +23,7 @@
                 <h1 id="headline">Ecossistemas de Produção Consciente</h1>
                 <p>Otimizando resultados através da agricultura regenerativa.</p>
                 <div class="cta-box">
-                    <input type="text" id="user-input" placeholder="Identifique-se para acesso">
+                    <input type="text" id="user-input" placeholder="Digite seu nome">
                     <button id="btn-start" onclick="initExperience()">Acessar Painel</button>
                 </div>
             </div>
@@ -34,26 +33,26 @@
             <h2 class="section-title">Pilares da Unidade Produtiva</h2>
             <div class="bento-grid">
                 <article class="feature-card" onclick="openDetails('roca')">
-                    <div class="card-image roca"></div>
+                    <div class="card-image" style="background-image: url('assets/img/roca.jpg');"></div>
                     <div class="card-content">
                         <h3>Gestão de Solo</h3>
-                        <p>Integração sistêmica e preservação de biomas.</p>
+                        <p>Clique para detalhes técnicos.</p>
                     </div>
                 </article>
 
                 <article class="feature-card" onclick="openDetails('animais')">
-                    <div class="card-image animais"></div>
+                    <div class="card-image" style="background-image: url('assets/img/animais.jpg');"></div>
                     <div class="card-content">
                         <h3>Pecuária Regenerativa</h3>
-                        <p>Bem-estar animal e ciclo de carbono neutro.</p>
+                        <p>Clique para detalhes técnicos.</p>
                     </div>
                 </article>
 
                 <article class="feature-card" onclick="openDetails('plantacoes')">
-                    <div class="card-image plantio"></div>
+                    <div class="card-image" style="background-image: url('assets/img/plantio.jpg');"></div>
                     <div class="card-content">
                         <h3>Fitotecnia Avançada</h3>
-                        <p>Produção diversificada e segurança alimentar.</p>
+                        <p>Clique para detalhes técnicos.</p>
                     </div>
                 </article>
             </div>
@@ -67,10 +66,6 @@
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 AgroForte Sustainable Solutions. Todos os direitos reservados.</p>
-    </footer>
-
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
