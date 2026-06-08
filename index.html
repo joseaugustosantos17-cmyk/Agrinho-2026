@@ -14,41 +14,66 @@
     <p>Equilíbrio entre produção e meio ambiente</p>
 
     <div class="controls">
-        <input type="text" id="nome" placeholder="Digite seu nome">
-        <button id="btn-saudacao">Entrar</button>
+        <input type="text" id="nome" placeholder="Seu nome">
 
-        <button id="theme-toggle">Trocar Tema</button>
+        <button id="btn-saudacao">Entrar</button>
+        <button id="theme-toggle">🌗 Tema</button>
         <button id="font-up">A+</button>
         <button id="font-down">A-</button>
+        <button id="reset">Reset</button>
     </div>
 
     <h2 id="saudacao"></h2>
+    <p id="clima">🌦️ Clima atual: Estável</p>
 </header>
 
 <main class="container">
 
+    <!-- CARDS -->
     <section class="card">
         <h3>🌾 Produção Sustentável</h3>
-        <p>A agricultura moderna respeita o solo e aumenta a produtividade.</p>
+        <p>Uso inteligente do solo para alta produtividade sem destruição ambiental.</p>
     </section>
 
     <section class="card">
-        <h3>💧 Uso consciente da água</h3>
-        <p>Monitoramento inteligente para reduzir desperdícios e preservar recursos.</p>
+        <h3>💧 Gestão da Água</h3>
+        <p>Redução de desperdício com sensores e irrigação inteligente.</p>
     </section>
 
-    <section class="card progress-card">
-        <h3>📊 Indicador de Sustentabilidade</h3>
-        <div class="bar">
-            <div id="barra" class="fill"></div>
-        </div>
-        <p id="contador">0%</p>
+    <section class="card">
+        <h3>🌿 Boas Práticas</h3>
+        <ul>
+            <li>Rotação de culturas</li>
+            <li>Uso de adubos naturais</li>
+            <li>Controle biológico de pragas</li>
+        </ul>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section class="card dashboard">
+        <h3>📊 Indicadores</h3>
+
+        <p>Solo</p>
+        <div class="bar"><div id="solo" class="fill"></div></div>
+
+        <p>Água</p>
+        <div class="bar"><div id="agua" class="fill"></div></div>
+
+        <p>Produção</p>
+        <div class="bar"><div id="prod" class="fill"></div></div>
+    </section>
+
+    <!-- DICA -->
+    <section class="card">
+        <h3>💡 Dica do Dia</h3>
+        <p id="dica">Clique para ver uma dica.</p>
+        <button id="btn-dica">Nova dica</button>
     </section>
 
 </main>
 
 <footer>
-    <p>Projeto Agrinho 2026 - Desenvolvido com HTML, CSS e JavaScript</p>
+    <p>Projeto Agrinho 2026</p>
 </footer>
 
 <script src="script.js"></script>
