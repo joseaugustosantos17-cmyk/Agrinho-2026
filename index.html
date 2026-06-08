@@ -1,1399 +1,180 @@
-
-Claude terminou a resposta
-transforme esse site em um site campião do agrinho html:<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agro Forte Futuro Sustentável</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<header class="header">
-    <h1>🌱 Agro Forte Futuro Sustentável</h1>
-    <p>Equilíbrio entre produção e meio ambiente</p>
-    <div class="controls">
-        <input type="text" id="nome" placeholder="Seu nome">
-        <button id="btn-saudacao">Entrar</button>
-        <button id="theme-toggle">🌗 Tema</button>
-        <button id="font-up">A+</button>
-        <button id="font-down">A-</button>
-        <button id="reset">Reset</button>
-    </div>
-    <h2 id="saudacao"></h2>
-    <p id="clima">🌦️ Clima atual: Estável</p>
-</header>
-<main class="container">
-    <section class="card">
-        <h3>🌾 Produção Sustentável</h3>
-        <p>Uso inteligente do solo.</p>
-    </section>
-    <section class="card">
-        <h3>💧 Gestão da Água</h3>
-        <p>Irrigação eficiente e inteligente.</p>
-    </section>
-    <section class="card">
-        <h3>🌿 Boas Práticas</h3>
-        <ul>
-            <li>Rotação de culturas</li>
-            <li>Adubos naturais</li>
-        </ul>
-    </section>
-    <section class="card dashboard">
-        <h3>📊 Indicadores</h3>
-        <p>Solo</p>
-        <div class="bar"><div id="solo" class="fill"></div></div>
-        <p>Água</p>
-        <div class="bar"><div id="agua" class="fill"></div></div>
-        <p>Produção</p>
-        <div class="bar"><div id="prod" class="fill"></div></div>
-    </section>
-    <section class="card">
-        <h3>💡 Dica do Dia</h3>
-        <p id="dica">Clique no botão para ver uma dica.</p>
-        <button id="btn-dica">Nova dica</button>
-    </section>
-</main>
-<footer>
-    <p>Projeto Agrinho 2026</p>
-</footer>
-<script src="script.js"></script>
-</body>
-</html>
-js:let tamanhoFonte = 16;
-/* 👤 SAUDAÇÃO */
-document.getElementById("btn-saudacao").addEventListener("click", () => {
-    const nome = document.getElementById("nome").value.trim();
-    if (!nome) return alert("Digite seu nome!");
-    document.getElementById("saudacao").textContent =
-        Olá, ${nome}! Bem-vindo 🌱;
-});
-/* 🌗 TEMA */
-document.getElementById("theme-toggle").addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-});
-/* 🔠 FONTE */
-document.getElementById("font-up").addEventListener("click", () => {
-    if (tamanhoFonte < 24) {
-        tamanhoFonte++;
-        document.body.style.fontSize = tamanhoFonte + "px";
-    }
-});
-document.getElementById("font-down").addEventListener("click", () => {
-    if (tamanhoFonte > 12) {
-        tamanhoFonte--;
-        document.body.style.fontSize = tamanhoFonte + "px";
-    }
-});
-/* 📊 BARRAS */
-function animarBarra(id, valorFinal) {
-    const barra = document.getElementById(id);
-    let i = 0;
-    const animar = () => {
-        if (i <= valorFinal) {
-            barra.style.width = i + "%";
-            i++;
-            requestAnimationFrame(animar);
-        }
-    };
-    animar();
-}
-animarBarra("solo", 80);
-animarBarra("agua", 65);
-animarBarra("prod", 90);
-/* 💡 DICAS */
-const dicas = [
-    "Use irrigação por gotejamento.",
-    "Rotação de culturas melhora o solo.",
-    "Adubo natural reduz impactos.",
-    "Evite desperdício de água."
-];
-document.getElementById("btn-dica").addEventListener("click", () => {
-    const dica = dicas[Math.floor(Math.random() * dicas.length)];
-    document.getElementById("dica").textContent = dica;
-});
-/* 🌦️ CLIMA DINÂMICO */
-const climas = ["🌦️ Chuva leve", "☀️ Ensolarado", "⛅ Nublado", "🌧️ Chuva forte"];
-setInterval(() => {
-    const c = climas[Math.floor(Math.random() * climas.length)];
-    document.getElementById("clima").textContent = c;
-}, 5000);  css: :root {
-    --verde: 
-#2e7d32;
-    --verde2: 
-#66bb6a;
-}
-/* 🌿 FUNDO ANIMADO */
-body {
-    margin: 0;
-    font-family: Arial;
-    color: #222;
-    overflow-x: hidden;
-    background: linear-gradient(-45deg, 
-#e8f5e9, 
-#f1fff1, 
-#d0ffd0, 
-#ffffff);
-    background-size: 400% 400%;
-    animation: fundo 10s ease infinite;
-}
-@keyframes fundo {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-/* HEADER */
-.header {
-    text-align: center;
-    padding: 20px;
-    background: linear-gradient(90deg, var(--verde), var(--verde2));
-    color: white;
-}
-/* BOTÕES */
-.controls button {
-    margin: 3px;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    background: var(--verde);
-    color: white;
-    transition: 0.3s;
-}
-.controls button:hover {
-    transform: scale(1.05);
-    background: var(--verde2);
-}
-/* CONTAINER */
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    padding: 20px;
-}
-/* CARDS */
-.card {
-    width: 260px;
-    background: rgba(255,255,255,0.9);
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: 0.3s;
-    backdrop-filter: blur(6px);
-}
-.card:hover {
-    transform: translateY(-5px);
-}
-/* BARRAS */
-.bar {
-    width: 100%;
-    height: 14px;
-    background: #ddd;
-    border-radius: 10px;
-    overflow: hidden;
-}
-.fill {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, var(--verde), var(--verde2));
-    transition: 1s;
-}
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 10px;
-}
-/* 🌙 DARK MODE COMPLETO */
-.dark {
-    background: 
-#0f1f0f;
-    color: 
-#e8f5e9;
-}
-.dark .card {
-    background: rgba(27, 46, 27, 0.9);
-}
-.dark .bar {
-    background: 
-#2a3b2a;
-}
-.dark .header {
-    background: linear-gradient(90deg, 
-#1b5e20, 
-#2e7d32);
-}
-
-Mostrar mais
-10:02
-
-Reading frontend design skill
-Reading frontend design skill
-Vou criar uma versão campeã do site Agrinho — com visual deslumbrante, tipografia premium, animações sofisticadas e uma identidade visual marcante sobre o campo e a sustentabilidade.
-
-
-Criou um arquivo, leu um arquivo
-Criou um arquivo, leu um arquivo
-Aqui está o seu site Agrinho campeão! 🏆🌱
-
-O que foi completamente transformado:
-
-Visual de impacto
-
-Paisagem rural animada no hero: céu gradiente, sol pulsante, nuvens flutuando, pássaros voando e fileiras de plantação balançando no vento
-Tipografia premium: Playfair Display (serifada elegante para títulos) + DM Sans (moderna para texto)
-Textura de grão sutil para dar profundidade
-Animações sofisticadas
-
-Contadores animados nos indicadores (0 → valor final)
-Barras que animam ao aparecer na tela via scroll (IntersectionObserver)
-Cards com hover flutuante
-Dicas com fade suave ao trocar
-Clima dinâmico com frases completas
-Conteúdo enriquecido
-
-Saudação inteligente: "Bom dia / Boa tarde / Boa noite" conforme o horário
-4 barras de indicadores (incluindo Biodiversidade nova)
-8 dicas detalhadas do campo
-Seção de estatísticas animadas no topo
-Cards com ícone, acento colorido e conteúdo expandido
-Modo escuro completo com tema noturno do campo, tudo em arquivo HTML único pronto para entregar.
-
-
-Agrinho campiao
-Código · HTML 
-tem q ter mais funcionalidades, para realmente ganhar
-
-10:10
-
-Você está sem mensagens gratuitas até 14:50
-Obter mais
-tem q ter mais funcionalidades, para realmente ganhar
-
-
-Claude é uma IA e pode cometer erros. Por favor, verifique as respostas.
-
-
-raw
-Agrinho campiao · HTML
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agro Forte — Futuro Sustentável | Projeto Agrinho 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Agrinho Sustentável</title>
+
 <style>
-  /* ===== RESET & BASE ===== */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
-  :root {
-    --soil: #3d2b1f;
-    --soil-mid: #6b4226;
-    --leaf: #1a4a1a;
-    --leaf-mid: #2e7d32;
-    --leaf-light: #4caf50;
-    --sprout: #8bc34a;
-    --sun: #f9a825;
-    --sun-light: #fff59d;
-    --sky: #e8f5e9;
-    --sky2: #f0fff0;
-    --water: #1565c0;
-    --water-light: #64b5f6;
-    --cream: #fafdf5;
-    --dark-bg: #0d1f0d;
-    --dark-card: #122012;
-    --dark-border: #1e3a1e;
-    --font-display: 'Playfair Display', Georgia, serif;
-    --font-body: 'DM Sans', sans-serif;
-    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
- 
-  html { scroll-behavior: smooth; }
- 
-  body {
-    font-family: var(--font-body);
-    background: var(--cream);
-    color: var(--soil);
-    overflow-x: hidden;
-    transition: background 0.4s, color 0.4s;
-    font-size: 16px;
-    line-height: 1.7;
-  }
- 
-  body.dark {
-    background: var(--dark-bg);
-    color: #d4e8d0;
-  }
- 
-  /* ===== GRAIN OVERLAY ===== */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.35;
-  }
- 
-  /* ===== LANDSCAPE HERO ===== */
-  .hero {
-    min-height: 100vh;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: linear-gradient(
-      180deg,
-      #87ceeb 0%,
-      #b8e4f9 30%,
-      #d4edda 55%,
-      #5a8f3c 55%,
-      #3a6b22 65%,
-      #2e5219 75%,
-      #3d2b1f 100%
-    );
-  }
- 
-  body.dark .hero {
-    background: linear-gradient(
-      180deg,
-      #0a1628 0%,
-      #0d2438 30%,
-      #0d1f0d 55%,
-      #0d1f0d 55%,
-      #091508 65%,
-      #060f04 75%,
-      #030703 100%
-    );
-  }
- 
-  /* SUN */
-  .sun {
-    position: absolute;
-    top: 8%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #fff9c4, #f9a825);
-    box-shadow: 0 0 60px 20px rgba(249,168,37,0.4), 0 0 120px 50px rgba(249,168,37,0.15);
-    animation: sunPulse 4s ease-in-out infinite;
-  }
- 
-  body.dark .sun {
-    background: radial-gradient(circle, #1a2a4a, #0d1a30);
-    box-shadow: 0 0 40px 15px rgba(100,181,246,0.15);
-  }
- 
-  @keyframes sunPulse {
-    0%, 100% { box-shadow: 0 0 60px 20px rgba(249,168,37,0.4), 0 0 120px 50px rgba(249,168,37,0.15); }
-    50% { box-shadow: 0 0 80px 30px rgba(249,168,37,0.5), 0 0 160px 70px rgba(249,168,37,0.2); }
-  }
- 
-  /* CLOUDS */
-  .cloud {
-    position: absolute;
-    background: rgba(255,255,255,0.85);
-    border-radius: 50px;
-    animation: floatCloud linear infinite;
-  }
-  .cloud::before, .cloud::after {
-    content: '';
-    position: absolute;
-    background: inherit;
-    border-radius: 50%;
-  }
-  .cloud-1 { width: 120px; height: 38px; top: 12%; left: -140px; animation-duration: 28s; animation-delay: 0s; }
-  .cloud-1::before { width: 60px; height: 60px; top: -30px; left: 20px; }
-  .cloud-1::after { width: 40px; height: 40px; top: -18px; left: 55px; }
-  .cloud-2 { width: 80px; height: 26px; top: 18%; left: -100px; animation-duration: 38s; animation-delay: -12s; opacity: 0.7; }
-  .cloud-2::before { width: 40px; height: 40px; top: -20px; left: 12px; }
-  .cloud-2::after { width: 28px; height: 28px; top: -12px; left: 36px; }
-  .cloud-3 { width: 100px; height: 30px; top: 8%; left: -120px; animation-duration: 45s; animation-delay: -20s; opacity: 0.6; }
-  .cloud-3::before { width: 50px; height: 50px; top: -25px; left: 15px; }
-  .cloud-3::after { width: 35px; height: 35px; top: -15px; left: 48px; }
- 
-  @keyframes floatCloud {
-    from { transform: translateX(0); }
-    to { transform: translateX(110vw); }
-  }
- 
-  body.dark .cloud { background: rgba(30,50,70,0.6); }
- 
-  /* BIRDS */
-  .birds {
-    position: absolute;
-    top: 22%;
-    left: 15%;
-    animation: floatBirds 20s ease-in-out infinite;
-  }
-  .bird {
-    display: inline-block;
-    width: 14px;
-    height: 5px;
-    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-    border-top: 2.5px solid rgba(255,255,255,0.8);
-    margin: 0 4px;
-    animation: flapWing 0.6s ease-in-out infinite alternate;
-  }
-  .bird:nth-child(2) { animation-delay: 0.1s; margin-top: 8px; }
-  .bird:nth-child(3) { animation-delay: 0.2s; }
-  @keyframes flapWing {
-    from { transform: scaleY(1); }
-    to { transform: scaleY(0.3); }
-  }
-  @keyframes floatBirds {
-    0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(30px, -15px); }
-  }
- 
-  /* HILLS */
-  .hills {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 45%;
-    pointer-events: none;
-  }
-  .hill {
-    position: absolute;
-    bottom: 0;
-    border-radius: 50% 50% 0 0;
-  }
-  .hill-1 {
-    width: 70%;
-    height: 200px;
-    left: -10%;
-    background: #4a7c30;
-  }
-  .hill-2 {
-    width: 60%;
-    height: 160px;
-    right: -5%;
-    background: #3d6b25;
-  }
-  .hill-3 {
-    width: 45%;
-    height: 120px;
-    left: 30%;
-    background: #5a8f3c;
-  }
-  body.dark .hill-1 { background: #1a3010; }
-  body.dark .hill-2 { background: #152510; }
-  body.dark .hill-3 { background: #1f3a15; }
- 
-  /* CROPS ROWS */
-  .crop-field {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 160px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    gap: 12px;
-    padding: 0 20px;
-    perspective: 300px;
-  }
-  .crop-row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-    transform-origin: bottom center;
-    animation: sway 3s ease-in-out infinite;
-  }
-  .crop-row:nth-child(even) { animation-delay: -1.5s; }
-  @keyframes sway {
-    0%, 100% { transform: rotateZ(-2deg); }
-    50% { transform: rotateZ(2deg); }
-  }
-  .stalk {
-    width: 3px;
-    background: linear-gradient(to top, #2e5219, #5a8f3c);
-    border-radius: 2px;
-  }
-  .leaf-top {
-    width: 18px;
-    height: 30px;
-    background: radial-gradient(ellipse at 50% 90%, #4caf50, #2e7d32);
-    border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
-    margin-bottom: -2px;
-  }
- 
-  /* HERO CONTENT */
-  .hero-content {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    padding: 2rem 1.5rem;
-    max-width: 800px;
-  }
- 
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.35);
-    color: white;
-    font-family: var(--font-body);
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 6px 18px;
-    border-radius: 100px;
-    margin-bottom: 1.5rem;
-    animation: fadeDown 0.8s var(--ease-spring) both;
-  }
- 
-  .hero-badge .dot {
-    width: 7px;
-    height: 7px;
-    background: var(--sprout);
-    border-radius: 50%;
-    animation: blink 2s ease-in-out infinite;
-  }
- 
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
- 
-  .hero-title {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: clamp(2.8rem, 7vw, 5.5rem);
-    line-height: 1.05;
-    color: white;
-    text-shadow: 0 4px 30px rgba(0,0,0,0.4);
-    animation: fadeDown 0.9s var(--ease-spring) 0.1s both;
-    letter-spacing: -0.02em;
-  }
- 
-  .hero-title em {
-    font-style: italic;
-    color: var(--sun-light);
-    display: block;
-  }
- 
-  .hero-subtitle {
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.85);
-    margin: 1.2rem 0 2.5rem;
-    font-weight: 300;
-    animation: fadeDown 0.9s var(--ease-spring) 0.2s both;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1.2rem;
-    margin-bottom: 2.5rem;
-  }
- 
-  /* CONTROLS */
-  .controls-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    animation: fadeDown 0.9s var(--ease-spring) 0.3s both;
-    margin-bottom: 1.2rem;
-  }
- 
-  .input-nome {
-    padding: 12px 20px;
-    border-radius: 100px;
-    border: 1.5px solid rgba(255,255,255,0.4);
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(8px);
-    color: white;
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    outline: none;
-    width: 200px;
-    transition: all 0.3s;
-  }
- 
-  .input-nome::placeholder { color: rgba(255,255,255,0.6); }
-  .input-nome:focus { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.2); }
- 
-  .btn {
-    padding: 12px 22px;
-    border-radius: 100px;
-    border: none;
-    cursor: pointer;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: all 0.25s var(--ease-spring);
-    white-space: nowrap;
-  }
- 
-  .btn:hover { transform: scale(1.06) translateY(-1px); }
-  .btn:active { transform: scale(0.97); }
- 
-  .btn-primary {
-    background: var(--leaf-mid);
-    color: white;
-    box-shadow: 0 4px 20px rgba(46,125,50,0.4);
-  }
- 
-  .btn-ghost {
-    background: rgba(255,255,255,0.18);
-    backdrop-filter: blur(8px);
-    border: 1.5px solid rgba(255,255,255,0.35);
-    color: white;
-    padding: 10px 16px;
-    font-size: 0.82rem;
-  }
- 
-  .btn-ghost:hover { background: rgba(255,255,255,0.28); }
- 
-  .saudacao-text {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    color: var(--sun-light);
-    font-style: italic;
-    min-height: 2rem;
-    animation: fadeDown 0.5s var(--ease-spring) both;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.4);
-  }
- 
-  .clima-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.25);
-    color: rgba(255,255,255,0.9);
-    padding: 7px 18px;
-    border-radius: 100px;
-    font-size: 0.85rem;
-    margin-top: 1rem;
-    transition: all 0.5s;
-    animation: fadeDown 0.9s var(--ease-spring) 0.4s both;
-  }
- 
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
- 
-  /* ===== MAIN CONTENT ===== */
-  .main {
-    padding: 80px 24px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
- 
-  .section-label {
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--leaf-mid);
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
- 
-  .section-label::before {
-    content: '';
-    display: inline-block;
-    width: 30px;
-    height: 1.5px;
-    background: var(--leaf-mid);
-  }
- 
-  body.dark .section-label { color: var(--sprout); }
-  body.dark .section-label::before { background: var(--sprout); }
- 
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
-    line-height: 1.15;
-    color: var(--soil);
-    margin-bottom: 3rem;
-  }
- 
-  body.dark .section-title { color: #c8e6c9; }
- 
-  /* ===== CARDS GRID ===== */
-  .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    margin-bottom: 80px;
-  }
- 
-  .card {
-    background: white;
-    border-radius: 20px;
-    padding: 2rem;
-    border: 1.5px solid rgba(46,125,50,0.1);
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.35s var(--ease-spring), box-shadow 0.35s;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-  }
- 
-  body.dark .card {
-    background: var(--dark-card);
-    border-color: var(--dark-border);
-    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
-  }
- 
-  .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 50px rgba(46,125,50,0.15);
-  }
- 
-  body.dark .card:hover {
-    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-  }
- 
-  .card-accent {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    border-radius: 20px 20px 0 0;
-  }
- 
-  .card-accent-green { background: linear-gradient(90deg, var(--leaf-mid), var(--sprout)); }
-  .card-accent-blue { background: linear-gradient(90deg, var(--water), var(--water-light)); }
-  .card-accent-sun { background: linear-gradient(90deg, var(--sun), #ffcc02); }
-  .card-accent-soil { background: linear-gradient(90deg, var(--soil-mid), #a0785a); }
- 
-  .card-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.6rem;
-    margin-bottom: 1.2rem;
-  }
- 
-  .icon-green { background: #e8f5e9; }
-  .icon-blue { background: #e3f2fd; }
-  .icon-sun { background: #fff9e6; }
-  .icon-soil { background: #efebe9; }
-  body.dark .icon-green { background: rgba(46,125,50,0.2); }
-  body.dark .icon-blue { background: rgba(21,101,192,0.2); }
-  body.dark .icon-sun { background: rgba(249,168,37,0.15); }
-  body.dark .icon-soil { background: rgba(109,66,38,0.25); }
- 
-  .card h3 {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--soil);
-    margin-bottom: 0.7rem;
-  }
- 
-  body.dark .card h3 { color: #c8e6c9; }
- 
-  .card p {
-    font-size: 0.92rem;
-    color: #5a4a3a;
-    line-height: 1.65;
-  }
- 
-  body.dark .card p { color: #8db890; }
- 
-  .card ul {
-    list-style: none;
-    margin-top: 0.8rem;
-  }
- 
-  .card ul li {
-    font-size: 0.9rem;
-    color: #5a4a3a;
-    padding: 6px 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-  }
- 
-  body.dark .card ul li {
-    color: #8db890;
-    border-bottom-color: rgba(255,255,255,0.05);
-  }
- 
-  .card ul li::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--leaf-mid);
-    flex-shrink: 0;
-  }
- 
-  body.dark .card ul li::before { background: var(--sprout); }
- 
-  /* ===== DASHBOARD ===== */
-  .dashboard-section {
-    background: white;
-    border-radius: 28px;
-    padding: 2.5rem;
-    border: 1.5px solid rgba(46,125,50,0.1);
-    margin-bottom: 80px;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
-  }
- 
-  body.dark .dashboard-section {
-    background: var(--dark-card);
-    border-color: var(--dark-border);
-  }
- 
-  .dashboard-title {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--soil);
-    margin-bottom: 2rem;
-  }
- 
-  body.dark .dashboard-title { color: #c8e6c9; }
- 
-  .bar-item {
-    margin-bottom: 1.5rem;
-  }
- 
-  .bar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-  }
- 
-  .bar-label {
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: var(--soil-mid);
-  }
- 
-  body.dark .bar-label { color: #8db890; }
- 
-  .bar-value {
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: var(--leaf-mid);
-    font-variant-numeric: tabular-nums;
-  }
- 
-  body.dark .bar-value { color: var(--sprout); }
- 
-  .bar-track {
-    height: 10px;
-    background: #f0f4f0;
-    border-radius: 100px;
-    overflow: hidden;
-  }
- 
-  body.dark .bar-track { background: #1e3a1e; }
- 
-  .bar-fill {
-    height: 100%;
-    width: 0%;
-    border-radius: 100px;
-    transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
- 
-  .fill-green { background: linear-gradient(90deg, var(--leaf-mid), var(--sprout)); }
-  .fill-blue { background: linear-gradient(90deg, var(--water), var(--water-light)); }
-  .fill-sun { background: linear-gradient(90deg, #e65100, var(--sun)); }
- 
-  /* ===== DICA ===== */
-  .dica-section {
-    background: linear-gradient(135deg, var(--leaf), #1e4d2b);
-    border-radius: 28px;
-    padding: 3rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 80px;
-  }
- 
-  .dica-section::before {
-    content: '"';
-    position: absolute;
-    top: -20px;
-    left: 30px;
-    font-family: var(--font-display);
-    font-size: 18rem;
-    color: rgba(255,255,255,0.04);
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-  }
- 
-  .dica-label {
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--sprout);
-    margin-bottom: 0.8rem;
-  }
- 
-  .dica-text {
-    font-family: var(--font-display);
-    font-size: clamp(1.3rem, 3vw, 2rem);
-    font-style: italic;
-    color: white;
-    line-height: 1.4;
-    max-width: 600px;
-    margin: 0 auto 2rem;
-    min-height: 3.5rem;
-    transition: opacity 0.3s;
-  }
- 
-  .btn-dica {
-    background: rgba(255,255,255,0.12);
-    border: 1.5px solid rgba(255,255,255,0.3);
-    color: white;
-    padding: 12px 30px;
-    border-radius: 100px;
-    cursor: pointer;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: all 0.25s var(--ease-spring);
-  }
- 
-  .btn-dica:hover {
-    background: rgba(255,255,255,0.22);
-    transform: scale(1.05);
-  }
- 
-  /* ===== PARCEIROS / STATS ===== */
-  .stats-strip {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 0;
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1.5px solid rgba(46,125,50,0.12);
-    margin-bottom: 80px;
-  }
- 
-  .stat-item {
-    padding: 2rem 1.5rem;
-    text-align: center;
-    background: white;
-    border-right: 1px solid rgba(46,125,50,0.1);
-    transition: background 0.3s;
-  }
- 
-  .stat-item:last-child { border-right: none; }
- 
-  .stat-item:hover { background: #f0fff0; }
- 
-  body.dark .stat-item { background: var(--dark-card); border-color: var(--dark-border); }
-  body.dark .stat-item:hover { background: #1a3518; }
- 
-  .stat-number {
-    font-family: var(--font-display);
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--leaf-mid);
-    line-height: 1;
-    margin-bottom: 0.4rem;
-  }
- 
-  body.dark .stat-number { color: var(--sprout); }
- 
-  .stat-desc {
-    font-size: 0.82rem;
-    color: #7a6a5a;
-    line-height: 1.4;
-  }
- 
-  body.dark .stat-desc { color: #7aaa80; }
- 
-  /* ===== FOOTER ===== */
-  .footer {
-    background: var(--soil);
-    color: rgba(255,255,255,0.5);
-    text-align: center;
-    padding: 3rem 2rem;
-    font-size: 0.85rem;
-  }
- 
-  body.dark .footer {
-    background: #060f04;
-  }
- 
-  .footer-logo {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
- 
-  .footer-logo span { color: var(--sprout); }
- 
-  .footer-divider {
-    width: 40px;
-    height: 2px;
-    background: var(--sprout);
-    margin: 1.2rem auto;
-    border-radius: 2px;
-  }
- 
-  /* ===== SCROLL REVEAL ===== */
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s var(--ease-spring);
-  }
- 
-  .reveal.visible {
-    opacity: 1;
-    transform: none;
-  }
- 
-  /* ===== RESPONSIVO ===== */
-  @media (max-width: 600px) {
-    .controls-wrap { flex-direction: column; }
-    .input-nome { width: 100%; }
-    .stats-strip { grid-template-columns: 1fr 1fr; }
-    .stat-item:nth-child(2) { border-right: none; }
-    .stat-item:nth-child(3) { border-top: 1px solid rgba(46,125,50,0.1); }
-    .dica-section { padding: 2rem 1.5rem; }
-  }
+body{
+  font-family:Arial;
+  margin:0;
+  background:#e8f5e9;
+  transition:0.3s;
+}
+
+header{
+  background:linear-gradient(90deg,#1b5e20,#43a047);
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+.container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+  padding:20px;
+}
+
+.card{
+  background:white;
+  padding:15px;
+  border-radius:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+button{
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  background:#43a047;
+  color:white;
+  cursor:pointer;
+  margin-top:5px;
+}
+
+button:hover{
+  background:#1b5e20;
+}
+
+.bar{
+  background:#ddd;
+  height:10px;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.fill{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#1b5e20,#66bb6a);
+  transition:0.5s;
+}
+
+.dark{
+  background:#0f1f0f;
+  color:white;
+}
+
+.dark .card{
+  background:#1e2d1e;
+  color:white;
+}
 </style>
 </head>
+
 <body>
- 
-<!-- ===== HERO ===== -->
-<header class="hero">
-  <div class="sun"></div>
-  <div class="cloud cloud-1"></div>
-  <div class="cloud cloud-2"></div>
-  <div class="cloud cloud-3"></div>
-  <div class="birds">
-    <div class="bird"></div>
-    <div class="bird"></div>
-    <div class="bird"></div>
-  </div>
- 
-  <div class="hero-content">
-    <div class="hero-badge">
-      <div class="dot"></div>
-      Projeto Agrinho 2026
-    </div>
- 
-    <h1 class="hero-title">
-      Agro Forte,
-      <em>Futuro Sustentável</em>
-    </h1>
- 
-    <p class="hero-subtitle">
-      Equilíbrio entre produção, natureza e as próximas gerações.
-    </p>
- 
-    <div class="controls-wrap">
-      <input type="text" id="nome" class="input-nome" placeholder="Seu nome aqui...">
-      <button id="btn-saudacao" class="btn btn-primary">Entrar no campo 🌱</button>
-      <button id="theme-toggle" class="btn btn-ghost">🌗 Tema</button>
-      <button id="font-up" class="btn btn-ghost">A+</button>
-      <button id="font-down" class="btn btn-ghost">A-</button>
-    </div>
- 
-    <div class="saudacao-text" id="saudacao"></div>
-    <div class="clima-badge" id="clima">🌦️ Clima atual: Estável</div>
-  </div>
- 
-  <!-- HILLS / CROP FIELD -->
-  <div class="hills">
-    <div class="hill hill-1"></div>
-    <div class="hill hill-2"></div>
-    <div class="hill hill-3"></div>
-  </div>
-  <div class="crop-field" id="cropField"></div>
+
+<header>
+  <h1>🌱 Agrinho Sustentável</h1>
+  <p id="status">Comece sua jornada</p>
 </header>
- 
-<!-- ===== MAIN ===== -->
-<main class="main">
- 
-  <!-- STATS STRIP -->
-  <div class="stats-strip reveal">
-    <div class="stat-item">
-      <div class="stat-number" data-count="80">0%</div>
-      <div class="stat-desc">Qualidade do Solo</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number" data-count="65">0%</div>
-      <div class="stat-desc">Eficiência Hídrica</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number" data-count="90">0%</div>
-      <div class="stat-desc">Produção Ativa</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number" data-count="42">0+</div>
-      <div class="stat-desc">Boas Práticas</div>
-    </div>
+
+<div class="container">
+
+  <div class="card">
+    <h3>👤 Nome</h3>
+    <input id="nome" placeholder="Digite seu nome">
+    <button onclick="entrar()">Entrar</button>
   </div>
- 
-  <!-- SECTION LABEL -->
-  <div class="reveal">
-    <p class="section-label">Pilares do Agro Forte</p>
-    <h2 class="section-title">Da semente ao<br>planeta verde</h2>
+
+  <div class="card">
+    <h3>🌱 Produção</h3>
+    <div class="bar"><div class="fill" id="p1"></div></div>
+    <button onclick="up('p1')">Aumentar</button>
   </div>
- 
-  <!-- CARDS GRID -->
-  <div class="cards-grid">
-    <div class="card reveal">
-      <div class="card-accent card-accent-green"></div>
-      <div class="card-icon icon-green">🌾</div>
-      <h3>Produção Sustentável</h3>
-      <p>Uso inteligente do solo com técnicas modernas que garantem colheitas abundantes sem degradar o meio ambiente. A terra que nos alimenta merece cuidado.</p>
-    </div>
- 
-    <div class="card reveal" style="transition-delay:0.1s">
-      <div class="card-accent card-accent-blue"></div>
-      <div class="card-icon icon-blue">💧</div>
-      <h3>Gestão da Água</h3>
-      <p>Irrigação por gotejamento, captação de chuva e monitoramento em tempo real garantem que cada gota seja usada com sabedoria e responsabilidade.</p>
-    </div>
- 
-    <div class="card reveal" style="transition-delay:0.2s">
-      <div class="card-accent card-accent-sun"></div>
-      <div class="card-icon icon-sun">☀️</div>
-      <h3>Energia Limpa</h3>
-      <p>Placas solares e bioenergia alimentam as propriedades rurais com energia renovável, reduzindo custos e emissões de carbono.</p>
-    </div>
- 
-    <div class="card reveal" style="transition-delay:0.3s">
-      <div class="card-accent card-accent-soil"></div>
-      <div class="card-icon icon-soil">🌿</div>
-      <h3>Boas Práticas</h3>
-      <ul>
-        <li>Rotação de culturas</li>
-        <li>Adubos naturais e compostagem</li>
-        <li>Proteção de nascentes</li>
-        <li>Reflorestamento de bordas</li>
-        <li>Controle biológico de pragas</li>
-      </ul>
-    </div>
+
+  <div class="card">
+    <h3>💧 Água</h3>
+    <div class="bar"><div class="fill" id="p2"></div></div>
+    <button onclick="up('p2')">Melhorar</button>
   </div>
- 
-  <!-- DASHBOARD -->
-  <div class="dashboard-section reveal">
-    <p class="section-label">Monitoramento</p>
-    <div class="dashboard-title">📊 Indicadores da Propriedade</div>
- 
-    <div class="bar-item">
-      <div class="bar-header">
-        <span class="bar-label">🌱 Qualidade do Solo</span>
-        <span class="bar-value" id="val-solo">0%</span>
-      </div>
-      <div class="bar-track">
-        <div class="bar-fill fill-green" id="solo"></div>
-      </div>
-    </div>
- 
-    <div class="bar-item">
-      <div class="bar-header">
-        <span class="bar-label">💧 Eficiência Hídrica</span>
-        <span class="bar-value" id="val-agua">0%</span>
-      </div>
-      <div class="bar-track">
-        <div class="bar-fill fill-blue" id="agua"></div>
-      </div>
-    </div>
- 
-    <div class="bar-item">
-      <div class="bar-header">
-        <span class="bar-label">🌾 Produtividade</span>
-        <span class="bar-value" id="val-prod">0%</span>
-      </div>
-      <div class="bar-track">
-        <div class="bar-fill fill-sun" id="prod"></div>
-      </div>
-    </div>
- 
-    <div class="bar-item">
-      <div class="bar-header">
-        <span class="bar-label">🌿 Índice de Biodiversidade</span>
-        <span class="bar-value" id="val-bio">0%</span>
-      </div>
-      <div class="bar-track">
-        <div class="bar-fill fill-green" id="bio"></div>
-      </div>
-    </div>
+
+  <div class="card">
+    <h3>🌿 Sustentabilidade</h3>
+    <div class="bar"><div class="fill" id="p3"></div></div>
+    <button onclick="up('p3')">Evoluir</button>
   </div>
- 
-  <!-- DICA -->
-  <div class="dica-section reveal">
-    <p class="dica-label">💡 Dica do Dia</p>
-    <p class="dica-text" id="dica">Clique no botão para receber uma dica do campo.</p>
-    <button class="btn-dica" id="btn-dica">Nova Dica do Campo</button>
+
+  <div class="card">
+    <h3>🏆 Nível</h3>
+    <p id="nivel">Iniciante</p>
   </div>
- 
-</main>
- 
-<!-- ===== FOOTER ===== -->
-<footer class="footer">
-  <div class="footer-logo">
-    🌾 <span>Agro</span> Forte
+
+  <div class="card">
+    <h3>🌗 Tema</h3>
+    <button onclick="tema()">Alternar</button>
   </div>
-  <div class="footer-divider"></div>
-  <p>Projeto Agrinho 2026 · Futuro Sustentável · Paraná</p>
-  <p style="margin-top: 6px; font-size: 0.78rem; opacity: 0.5;">Equilíbrio entre produção e meio ambiente</p>
-</footer>
- 
+
+</div>
+
 <script>
-  /* ===== FONTE ===== */
-  let tamanhoFonte = 16;
-  document.getElementById("font-up").addEventListener("click", () => {
-    if (tamanhoFonte < 22) { tamanhoFonte++; document.body.style.fontSize = tamanhoFonte + "px"; }
-  });
-  document.getElementById("font-down").addEventListener("click", () => {
-    if (tamanhoFonte > 12) { tamanhoFonte--; document.body.style.fontSize = tamanhoFonte + "px"; }
-  });
- 
-  /* ===== TEMA ===== */
-  document.getElementById("theme-toggle").addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-  });
- 
-  /* ===== SAUDAÇÃO ===== */
-  document.getElementById("btn-saudacao").addEventListener("click", () => {
-    const nome = document.getElementById("nome").value.trim();
-    if (!nome) { alert("Digite seu nome para entrar no campo!"); return; }
-    const hora = new Date().getHours();
-    let periodo = hora < 12 ? "Bom dia" : hora < 18 ? "Boa tarde" : "Boa noite";
-    document.getElementById("saudacao").textContent = `${periodo}, ${nome}! Bem-vindo ao campo 🌱`;
-  });
- 
-  /* ===== CLIMA ===== */
-  const climas = [
-    "🌦️ Chuva leve — ideal para plantio",
-    "☀️ Ensolarado — ótimo para colheita",
-    "⛅ Parcialmente nublado",
-    "🌧️ Chuva forte — proteja as mudas",
-    "🌤️ Sol com nuvens",
-    "🌈 Após a chuva — solo úmido"
-  ];
-  setInterval(() => {
-    document.getElementById("clima").textContent = climas[Math.floor(Math.random() * climas.length)];
-  }, 6000);
- 
-  /* ===== BARRAS ANIMADAS ===== */
-  function animarBarra(id, valId, valorFinal) {
-    const barra = document.getElementById(id);
-    const valElem = document.getElementById(valId);
-    let i = 0;
-    function animar() {
-      if (i <= valorFinal) {
-        barra.style.width = i + "%";
-        if (valElem) valElem.textContent = i + "%";
-        i++;
-        requestAnimationFrame(animar);
-      }
-    }
-    animar();
+let nome = "";
+
+let valores = {
+  p1: 10,
+  p2: 10,
+  p3: 10
+};
+
+function render(){
+  for(let k in valores){
+    document.getElementById(k).style.width = valores[k] + "%";
   }
- 
-  /* ===== SCROLL REVEAL ===== */
-  const reveals = document.querySelectorAll(".reveal");
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        /* Animar barras quando o dashboard aparecer */
-        if (entry.target.querySelector("#solo")) {
-          setTimeout(() => {
-            animarBarra("solo", "val-solo", 80);
-            animarBarra("agua", "val-agua", 65);
-            animarBarra("prod", "val-prod", 90);
-            animarBarra("bio", "val-bio", 73);
-          }, 300);
-        }
-        /* Animar stats numéricos */
-        if (entry.target.querySelector("[data-count]")) {
-          entry.target.querySelectorAll("[data-count]").forEach(el => {
-            const target = parseInt(el.dataset.count);
-            const suffix = el.textContent.includes('+') ? '+' : '%';
-            let current = 0;
-            const step = Math.ceil(target / 60);
-            const timer = setInterval(() => {
-              current = Math.min(current + step, target);
-              el.textContent = current + suffix;
-              if (current >= target) clearInterval(timer);
-            }, 20);
-          });
-        }
-      }
-    });
-  }, { threshold: 0.15 });
-  reveals.forEach(el => observer.observe(el));
- 
-  /* ===== DICAS ===== */
-  const dicas = [
-    "Use irrigação por gotejamento para economizar até 60% de água.",
-    "Rotação de culturas enriquece o solo e previne pragas naturalmente.",
-    "Adubo orgânico e compostagem reduzem o uso de químicos.",
-    "Plante árvores nativas nas bordas para atrair polinizadores.",
-    "Monitore a umidade do solo antes de irrigar — evite desperdício.",
-    "Biodigestores transformam resíduos orgânicos em energia limpa.",
-    "Terraceamento previne erosão nas encostas e protege nascentes.",
-    "Sementes crioulas são adaptadas ao clima local e mais resistentes."
-  ];
-  document.getElementById("btn-dica").addEventListener("click", () => {
-    const el = document.getElementById("dica");
-    el.style.opacity = "0";
-    setTimeout(() => {
-      el.textContent = dicas[Math.floor(Math.random() * dicas.length)];
-      el.style.opacity = "1";
-    }, 300);
-  });
- 
-  /* ===== CROP FIELD GERADO ===== */
-  const field = document.getElementById("cropField");
-  const numPlants = 30;
-  for (let i = 0; i < numPlants; i++) {
-    const row = document.createElement("div");
-    row.className = "crop-row";
-    row.style.animationDelay = (Math.random() * 2) + "s";
-    const h = 40 + Math.random() * 80;
-    row.innerHTML = `
-      <div class="leaf-top" style="width:${12+Math.random()*10}px;height:${20+Math.random()*16}px"></div>
-      <div class="stalk" style="height:${h}px"></div>
-    `;
-    field.appendChild(row);
+
+  let media = (valores.p1 + valores.p2 + valores.p3)/3;
+
+  let nivel =
+    media < 30 ? "🌱 Iniciante" :
+    media < 60 ? "🌿 Produtor" :
+    media < 85 ? "🌾 Avançado" :
+    "🏆 Mestre";
+
+  document.getElementById("nivel").innerText = nivel;
+
+  document.getElementById("status").innerText =
+    nome ? `Bem-vindo ${nome} | Impacto ${Math.round(media)}%` : "Comece sua jornada 🌱";
+
+  localStorage.setItem("save", JSON.stringify({nome,valores}));
+}
+
+function entrar(){
+  nome = document.getElementById("nome").value || "";
+  render();
+}
+
+function up(id){
+  valores[id] = Math.min(100, valores[id] + 10);
+  render();
+}
+
+function tema(){
+  document.body.classList.toggle("dark");
+}
+
+/* LOAD */
+window.onload = () => {
+  let data = JSON.parse(localStorage.getItem("save"));
+  if(data){
+    nome = data.nome;
+    valores = data.valores;
   }
+  render();
+};
+
+render();
 </script>
+
 </body>
 </html>
- 
-Você atingiu seu limite de mensagens do Claude. Os limites serão redefinidos às 14:50. Para limites maiores, explore nosso plano Pro.
-
