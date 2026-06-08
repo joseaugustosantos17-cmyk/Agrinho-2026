@@ -1,80 +1,58 @@
-<!-- TABS -->
-<section id="explorar" class="explorer-section">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Forte Futuro Sustentável</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    <div class="tabs-nav">
-        <button class="tab-link active" onclick="openTab(event, 'biotec')">Biotecnologia</button>
-        <button class="tab-link" onclick="openTab(event, 'videos')">Vídeos</button>
-        <button class="tab-link" onclick="openTab(event, 'novidades')">Novidades</button>
+<body>
+
+<header class="header">
+    <h1>🌱 Agro Forte Futuro Sustentável</h1>
+    <p>Equilíbrio entre produção e meio ambiente</p>
+
+    <div class="controls">
+        <input type="text" id="nome" placeholder="Digite seu nome">
+        <button id="btn-saudacao">Entrar</button>
+
+        <button id="theme-toggle">Trocar Tema</button>
+        <button id="font-up">A+</button>
+        <button id="font-down">A-</button>
     </div>
 
-    <!-- BIOTEC -->
-    <div id="biotec" class="tab-content active">
-        <h3>Biotecnologia</h3>
+    <h2 id="saudacao"></h2>
+</header>
 
-        <div class="cards-grid">
-            <div class="tech-card">
-                <img src="https://via.placeholder.com/250x150?text=Planta+Genética" alt="Planta Genética">
-                <p>Novas técnicas de melhoramento genético sustentável.</p>
-            </div>
+<main class="container">
 
-            <div class="tech-card">
-                <img src="https://via.placeholder.com/250x150?text=Drone+Agrícola" alt="Drone Agrícola">
-                <p>Drones monitorando o crescimento das culturas.</p>
-            </div>
+    <section class="card">
+        <h3>🌾 Produção Sustentável</h3>
+        <p>A agricultura moderna respeita o solo e aumenta a produtividade.</p>
+    </section>
+
+    <section class="card">
+        <h3>💧 Uso consciente da água</h3>
+        <p>Monitoramento inteligente para reduzir desperdícios.</p>
+    </section>
+
+    <section class="card">
+        <h3>📊 Indicador de Sustentabilidade</h3>
+
+        <div class="bar">
+            <div id="barra" class="fill"></div>
         </div>
-    </div>
 
-    <!-- VÍDEOS -->
-    <div id="videos" class="tab-content">
-        <h3>Vídeos</h3>
+        <p id="contador">0%</p>
+    </section>
 
-        <div class="cards-grid">
-            <div class="tech-card">
-                <video controls width="250">
-                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                    Seu navegador não suporta vídeo.
-                </video>
-                <p>Demonstrativo de técnicas de irrigação sustentável.</p>
-            </div>
+</main>
 
-            <div class="tech-card">
-                <video controls width="250">
-                    <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
-                    Seu navegador não suporta vídeo.
-                </video>
-                <p>Uso de sensores para monitoramento de solo.</p>
-            </div>
-        </div>
-    </div>
+<footer>
+    <p>Projeto Agrinho 2026 - Desenvolvido com HTML, CSS e JavaScript</p>
+</footer>
 
-    <!-- NOVIDADES -->
-    <div id="novidades" class="tab-content">
-        <h3>Novidades</h3>
-
-        <div class="cards-grid">
-            <div class="tech-card">
-                <img src="https://via.placeholder.com/250x150?text=Nova+Tecnologia" alt="Nova Tecnologia">
-                <p>Novas soluções em compostagem inteligente.</p>
-            </div>
-
-            <div class="tech-card">
-                <img src="https://via.placeholder.com/250x150?text=Eco+Inovação" alt="Eco Inovação">
-                <p>Ferramentas de monitoramento de biodiversidade.</p>
-            </div>
-        </div>
-    </div>
-
-</section>
-
-<script>
-function openTab(evt, tabName) {
-    const tabContents = document.querySelectorAll('.tab-content');
-    const tabLinks = document.querySelectorAll('.tab-link');
-
-    tabContents.forEach(tc => tc.classList.remove('active'));
-    tabLinks.forEach(tl => tl.classList.remove('active'));
-
-    document.getElementById(tabName).classList.add('active');
-    evt.currentTarget.classList.add('active');
-}
-</script>
+<script src="script.js"></script>
+</body>
+</html>
