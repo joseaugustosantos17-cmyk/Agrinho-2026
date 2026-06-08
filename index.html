@@ -1,18 +1,22 @@
 <!-- TABS -->
 <section id="explorar" class="explorer-section">
+
     <div class="tabs-nav">
         <button class="tab-link active" onclick="openTab(event, 'biotec')">Biotecnologia</button>
         <button class="tab-link" onclick="openTab(event, 'videos')">Vídeos</button>
         <button class="tab-link" onclick="openTab(event, 'novidades')">Novidades</button>
     </div>
 
+    <!-- BIOTEC -->
     <div id="biotec" class="tab-content active">
         <h3>Biotecnologia</h3>
+
         <div class="cards-grid">
             <div class="tech-card">
                 <img src="https://via.placeholder.com/250x150?text=Planta+Genética" alt="Planta Genética">
                 <p>Novas técnicas de melhoramento genético sustentável.</p>
             </div>
+
             <div class="tech-card">
                 <img src="https://via.placeholder.com/250x150?text=Drone+Agrícola" alt="Drone Agrícola">
                 <p>Drones monitorando o crescimento das culturas.</p>
@@ -20,8 +24,10 @@
         </div>
     </div>
 
+    <!-- VÍDEOS -->
     <div id="videos" class="tab-content">
         <h3>Vídeos</h3>
+
         <div class="cards-grid">
             <div class="tech-card">
                 <video controls width="250">
@@ -30,6 +36,7 @@
                 </video>
                 <p>Demonstrativo de técnicas de irrigação sustentável.</p>
             </div>
+
             <div class="tech-card">
                 <video controls width="250">
                     <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
@@ -40,40 +47,34 @@
         </div>
     </div>
 
+    <!-- NOVIDADES -->
     <div id="novidades" class="tab-content">
         <h3>Novidades</h3>
+
         <div class="cards-grid">
             <div class="tech-card">
                 <img src="https://via.placeholder.com/250x150?text=Nova+Tecnologia" alt="Nova Tecnologia">
                 <p>Novas soluções em compostagem inteligente.</p>
             </div>
+
             <div class="tech-card">
                 <img src="https://via.placeholder.com/250x150?text=Eco+Inovação" alt="Eco Inovação">
                 <p>Ferramentas de monitoramento de biodiversidade.</p>
             </div>
         </div>
     </div>
+
 </section>
 
 <script>
-    function openTab(evt, tabName) {
-        const tabContents = document.querySelectorAll('.tab-content');
-        const tabLinks = document.querySelectorAll('.tab-link');
+function openTab(evt, tabName) {
+    const tabContents = document.querySelectorAll('.tab-content');
+    const tabLinks = document.querySelectorAll('.tab-link');
 
-        tabContents.forEach(tc => tc.classList.remove('active'));
-        tabLinks.forEach(tl => tl.classList.remove('active'));
+    tabContents.forEach(tc => tc.classList.remove('active'));
+    tabLinks.forEach(tl => tl.classList.remove('active'));
 
-        document.getElementById(tabName).classList.add('active');
-        evt.currentTarget.classList.add('active');
-    }
-
-    // Exemplo de animação das barras do dashboard
-    window.addEventListener('load', () => {
-        document.getElementById('carbon-fill').style.width = '75%';
-        document.getElementById('carbon-stat').textContent = '75%';
-        document.getElementById('water-fill').style.width = '60%';
-        document.getElementById('water-stat').textContent = '60%';
-        document.getElementById('prod-fill').style.width = '90%';
-        document.getElementById('prod-stat').textContent = '90%';
-    });
+    document.getElementById(tabName).classList.add('active');
+    evt.currentTarget.classList.add('active');
+}
 </script>
