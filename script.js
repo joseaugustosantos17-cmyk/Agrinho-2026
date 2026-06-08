@@ -1,68 +1,72 @@
-// ===============================
-// VARIÁVEIS GLOBAIS
-// ===============================
 let tamanhoFonte = 16;
-let usuario = "";
 
-// ===============================
-// SAUDAÇÃO PERSONALIZADA
-// ===============================
+/* 👤 SAUDAÇÃO */
 document.getElementById("btn-saudacao").addEventListener("click", () => {
-    usuario = document.getElementById("nome").value.trim();
+    const nome = document.getElementById("nome").value.trim();
 
-    if (!usuario) {
-        alert("Digite seu nome!");
-        return;
-    }
+    if (!nome) return alert("Digite seu nome!");
 
     document.getElementById("saudacao").textContent =
-        `Olá, ${usuario}! Bem-vindo ao Agro Sustentável 🌱`;
+        `Olá, ${nome}! Bem-vindo 🌱`;
 });
 
-// ===============================
-// TEMA ESCURO / CLARO
-// ===============================
+/* 🌗 TEMA */
 document.getElementById("theme-toggle").addEventListener("click", () => {
     document.body.classList.toggle("dark");
 });
 
-// ===============================
-// CONTROLE DE FONTE
-// ===============================
-const aumentarFonte = document.getElementById("font-up");
-const diminuirFonte = document.getElementById("font-down");
-
-aumentarFonte.addEventListener("click", () => {
+/* 🔠 FONTE */
+document.getElementById("font-up").addEventListener("click", () => {
     if (tamanhoFonte < 24) {
         tamanhoFonte++;
-        document.body.style.fontSize = `${tamanhoFonte}px`;
+        document.body.style.fontSize = tamanhoFonte + "px";
     }
 });
 
-diminuirFonte.addEventListener("click", () => {
+document.getElementById("font-down").addEventListener("click", () => {
     if (tamanhoFonte > 12) {
         tamanhoFonte--;
-        document.body.style.fontSize = `${tamanhoFonte}px`;
+        document.body.style.fontSize = tamanhoFonte + "px";
     }
 });
 
-// ===============================
-// ANIMAÇÃO DA BARRA DE SUSTENTABILIDADE
-// ===============================
-function animarBarra(idBarra, idContador, meta) {
-    const barra = document.getElementById(idBarra);
-    const contador = document.getElementById(idContador);
-    let valor = 0;
+/* 📊 BARRAS */
+function animarBarra(id, valorFinal) {
+    const barra = document.getElementById(id);
+    let i = 0;
 
-    const frame = () => {
-        if (valor < meta) {
-            valor++;
-            barra.style.width = valor + "%";
-            contador.textContent = valor + "%";
-            requestAnimationFrame(frame);
+    const animar = () => {
+        if (i <= valorFinal) {
+            barra.style.width = i + "%";
+            i++;
+            requestAnimationFrame(animar);
         }
     };
-    requestAnimationFrame(frame);
+
+    animar();
 }
 
-animarBarra("barra", "contador", 85);
+animarBarra("solo", 80);
+animarBarra("agua", 65);
+animarBarra("prod", 90);
+
+/* 💡 DICAS */
+const dicas = [
+    "Use irrigação por gotejamento.",
+    "Rotação de culturas melhora o solo.",
+    "Adubo natural reduz impactos.",
+    "Evite desperdício de água."
+];
+
+document.getElementById("btn-dica").addEventListener("click", () => {
+    const dica = dicas[Math.floor(Math.random() * dicas.length)];
+    document.getElementById("dica").textContent = dica;
+});
+
+/* 🌦️ CLIMA DINÂMICO */
+const climas = ["🌦️ Chuva leve", "☀️ Ensolarado", "⛅ Nublado", "🌧️ Chuva forte"];
+
+setInterval(() => {
+    const c = climas[Math.floor(Math.random() * climas.length)];
+    document.getElementById("clima").textContent = c;
+}, 5000);
