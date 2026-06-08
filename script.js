@@ -1,72 +1,106 @@
-let tamanhoFonte = 16;
+/* =========================
+   🌱 SISTEMA CAMPEÃO AGRINHO
+========================= */
 
-/* 👤 SAUDAÇÃO */
-document.getElementById("btn-saudacao").addEventListener("click", () => {
-    const nome = document.getElementById("nome").value.trim();
+let pontos = parseInt(localStorage.getItem("pontos")) || 0;
+let arvores = parseInt(localStorage.getItem("arvores")) || 0;
 
-    if (!nome) return alert("Digite seu nome!");
-
+/* SALVAR NOME */
+const nomeSalvo = localStorage.getItem("nome");
+if (nomeSalvo) {
     document.getElementById("saudacao").textContent =
-        `Olá, ${nome}! Bem-vindo 🌱`;
-});
-
-/* 🌗 TEMA */
-document.getElementById("theme-toggle").addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-});
-
-/* 🔠 FONTE */
-document.getElementById("font-up").addEventListener("click", () => {
-    if (tamanhoFonte < 24) {
-        tamanhoFonte++;
-        document.body.style.fontSize = tamanhoFonte + "px";
-    }
-});
-
-document.getElementById("font-down").addEventListener("click", () => {
-    if (tamanhoFonte > 12) {
-        tamanhoFonte--;
-        document.body.style.fontSize = tamanhoFonte + "px";
-    }
-});
-
-/* 📊 BARRAS */
-function animarBarra(id, valorFinal) {
-    const barra = document.getElementById(id);
-    let i = 0;
-
-    const animar = () => {
-        if (i <= valorFinal) {
-            barra.style.width = i + "%";
-            i++;
-            requestAnimationFrame(animar);
-        }
-    };
-
-    animar();
+        `Bem-vindo de volta, ${nomeSalvo} 🌱`;
 }
 
-animarBarra("solo", 80);
-animarBarra("agua", 65);
-animarBarra("prod", 90);
+/* ENTRADA DO USUÁRIO */
+document.getElementById("btn-saudacao").addEventListener("click", () => {
+    const nome = document.getElementById("nome").value.trim();
+    if (!nome) return;
 
-/* 💡 DICAS */
-const dicas = [
-    "Use irrigação por gotejamento.",
-    "Rotação de culturas melhora o solo.",
-    "Adubo natural reduz impactos.",
-    "Evite desperdício de água."
-];
+    localStorage.setItem("nome", nome);
 
-document.getElementById("btn-dica").addEventListener("click", () => {
-    const dica = dicas[Math.floor(Math.random() * dicas.length)];
-    document.getElementById("dica").textContent = dica;
+    pontos += 10;
+    atualizarPontos();
+
+    document.getElementById("saudacao").textContent =
+        `Olá, ${nome}! Você começou sua jornada sustentável 🌱`;
 });
 
-/* 🌦️ CLIMA DINÂMICO */
-const climas = ["🌦️ Chuva leve", "☀️ Ensolarado", "⛅ Nublado", "🌧️ Chuva forte"];
+/* 🌳 PLANTAR ÁRVORE VIRTUAL */
+const btnArvore = document.createElement("button");
+btnArvore.textContent = "🌳 Plantar Árvore";
+btnArvore.className = "btn btn-primary";
+document.querySelector(".controls-wrap").appendChild(btnArvore);
 
-setInterval(() => {
-    const c = climas[Math.floor(Math.random() * climas.length)];
-    document.getElementById("clima").textContent = c;
-}, 5000);
+btnArvore.addEventListener("click", () => {
+    arvores++;
+    pontos += 5;
+
+    localStorage.setItem("arvores", arvores);
+
+    alert(`Você plantou ${arvores} árvores virtuais 🌳`);
+
+    atualizarPontos();
+});
+
+/* 🏆 SISTEMA DE PONTOS */
+function atualizarPontos() {
+    localStorage.setItem("pontos", pontos);
+
+    let status =
+        pontos < 30 ? "🌱 Iniciante sustentável" :
+        pontos < 70 ? "🌿 Agricultor consciente" :
+        "🏆 Mestre da sustentabilidade";
+
+    document.getElementById("clima").textContent =
+        `${status} | Pontos: ${pontos}`;
+}
+
+/* 🎮 MISSÃO DIÁRIA */
+const missoes = [
+    "Reduza o uso de água hoje 💧",
+    "Plante uma árvore virtual 🌳",
+    "Aprenda uma prática sustentável 🌱",
+    "Evite desperdício de recursos ♻️"
+];
+
+const missao = document.createElement("div");
+missao.style.marginTop = "15px";
+missao.style.color = "white";
+missao.style.fontSize = "0.9rem";
+missao.textContent =
+    "🎯 Missão do dia: " + missoes[Math.floor(Math.random() * missoes.length)];
+
+document.querySelector(".hero-content").appendChild(missao);
+
+/* 🎓 QUIZ AGRÍCOLA */
+const quizBtn = document.createElement("button");
+quizBtn.textContent = "🎓 Quiz do Agro";
+quizBtn.className = "btn btn-ghost";
+document.querySelector(".controls-wrap").appendChild(quizBtn);
+
+quizBtn.addEventListener("click", () => {
+    const pergunta = "Qual prática ajuda a preservar o solo?\n\nA) Queimada\nB) Rotação de culturas\nC) Desmatamento";
+
+    const resposta = prompt(pergunta);
+
+    if (resposta?.toLowerCase() === "b") {
+        pontos += 20;
+        alert("Correto! 🌱 Você ganhou 20 pontos");
+    } else {
+        alert("Resposta incorreta. A correta é B.");
+    }
+
+    atualizarPontos();
+});
+
+/* 🧠 FEEDBACK INTELIGENTE FINAL */
+setTimeout(() => {
+    if (pontos > 80) {
+        alert("🏆 Excelente! Seu impacto ambiental está muito positivo!");
+    } else if (pontos > 40) {
+        alert("🌿 Bom trabalho! Mas ainda dá para melhorar.");
+    } else {
+        alert("🌱 Comece a praticar sustentabilidade para evoluir!");
+    }
+}, 4000);
