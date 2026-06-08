@@ -7,18 +7,16 @@ let usuario = "";
 // ===============================
 // SAUDAÇÃO PERSONALIZADA
 // ===============================
-const btnSaudacao = document.getElementById("btn-saudacao");
+document.getElementById("btn-saudacao").addEventListener("click", () => {
+    usuario = document.getElementById("nome").value.trim();
 
-btnSaudacao.addEventListener("click", () => {
-    usuario = document.getElementById("nome").value;
-
-    if (usuario.trim() === "") {
+    if (!usuario) {
         alert("Digite seu nome!");
         return;
     }
 
     document.getElementById("saudacao").textContent =
-        "Olá, " + usuario + "! Bem-vindo ao Agro Sustentável 🌱";
+        `Olá, ${usuario}! Bem-vindo ao Agro Sustentável 🌱`;
 });
 
 // ===============================
@@ -29,35 +27,42 @@ document.getElementById("theme-toggle").addEventListener("click", () => {
 });
 
 // ===============================
-// TAMANHO DA FONTE
+// CONTROLE DE FONTE
 // ===============================
-document.getElementById("font-up").addEventListener("click", () => {
+const aumentarFonte = document.getElementById("font-up");
+const diminuirFonte = document.getElementById("font-down");
+
+aumentarFonte.addEventListener("click", () => {
     if (tamanhoFonte < 24) {
         tamanhoFonte++;
-        document.body.style.fontSize = tamanhoFonte + "px";
+        document.body.style.fontSize = `${tamanhoFonte}px`;
     }
 });
 
-document.getElementById("font-down").addEventListener("click", () => {
+diminuirFonte.addEventListener("click", () => {
     if (tamanhoFonte > 12) {
         tamanhoFonte--;
-        document.body.style.fontSize = tamanhoFonte + "px";
+        document.body.style.fontSize = `${tamanhoFonte}px`;
     }
 });
 
 // ===============================
-// ANIMAÇÃO DA BARRA + CONTADOR
+// ANIMAÇÃO DA BARRA DE SUSTENTABILIDADE
 // ===============================
-let valor = 0;
-const barra = document.getElementById("barra");
-const contador = document.getElementById("contador");
+function animarBarra(idBarra, idContador, meta) {
+    const barra = document.getElementById(idBarra);
+    const contador = document.getElementById(idContador);
+    let valor = 0;
 
-const animar = setInterval(() => {
-    if (valor >= 85) {
-        clearInterval(animar);
-    } else {
-        valor++;
-        barra.style.width = valor + "%";
-        contador.textContent = valor + "%";
-    }
-}, 20);
+    const frame = () => {
+        if (valor < meta) {
+            valor++;
+            barra.style.width = valor + "%";
+            contador.textContent = valor + "%";
+            requestAnimationFrame(frame);
+        }
+    };
+    requestAnimationFrame(frame);
+}
+
+animarBarra("barra", "contador", 85);
