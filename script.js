@@ -1,56 +1,93 @@
-// Modo escuro
-document.getElementById("mode-toggle").addEventListener("click", () => {
+// ===============================
+// MODO ESCURO COM MEMÓRIA
+// ===============================
+const modeToggle = document.getElementById("mode-toggle");
+
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+}
+
+modeToggle.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
+
+    localStorage.setItem(
+        "theme",
+        document.body.classList.contains("dark-mode") ? "dark" : "light"
+    );
 });
 
-// Aumentar e diminuir fonte
-let currentSize = 16;
+// ===============================
+// TAMANHO DA FONTE
+// ===============================
+let currentSize = parseInt(localStorage.getItem("fontSize")) || 16;
+
+document.body.style.fontSize = currentSize + "px";
 
 document.getElementById("font-increase").addEventListener("click", () => {
-    currentSize += 1;
-    document.body.style.fontSize = currentSize + "px";
+    if (currentSize < 24) {
+        currentSize++;
+        document.body.style.fontSize = currentSize + "px";
+        localStorage.setItem("fontSize", currentSize);
+    }
 });
 
 document.getElementById("font-decrease").addEventListener("click", () => {
-    currentSize -= 1;
-    document.body.style.fontSize = currentSize + "px";
+    if (currentSize > 12) {
+        currentSize--;
+        document.body.style.fontSize = currentSize + "px";
+        localStorage.setItem("fontSize", currentSize);
+    }
 });
 
-// Tabs
+// ===============================
+// SISTEMA DE TABS
+// ===============================
 function openTab(evt, tabName) {
-    let contents = document.getElementsByClassName("tab-content");
-    let links = document.getElementsByClassName("tab-link");
+    const contents = document.querySelectorAll(".tab-content");
+    const links = document.querySelectorAll(".tab-link");
 
-    for (let i = 0; i < contents.length; i++) {
-        contents[i].classList.remove("active");
-    }
+    contents.forEach(content => {
+        content.classList.remove("active");
+    });
 
-    for (let i = 0; i < links.length; i++) {
-        links[i].classList.remove("active");
-    }
+    links.forEach(link => {
+        link.classList.remove("active");
+    });
 
     document.getElementById(tabName).classList.add("active");
     evt.currentTarget.classList.add("active");
 }
 
-// Animação dos indicadores
+// ===============================
+// ANIMAÇÃO DOS INDICADORES
+// ===============================
 function animateValue(id, end) {
     let start = 0;
+    const duration = 1500;
+    const stepTime = duration / end;
 
-    let timer = setInterval(() => {
+    const timer = setInterval(() => {
         start++;
+
         document.getElementById(id).textContent = start + "%";
 
         if (start >= end) {
             clearInterval(timer);
         }
-    }, 20);
+    }, stepTime);
 }
 
-window.onload = () => {
+// ===============================
+// DASHBOARD
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+
     animateValue("carbon-stat", 94);
     animateValue("water-stat", 100);
+    animateValue("prod-stat", 87);
 
     document.getElementById("carbon-fill").style.width = "94%";
     document.getElementById("water-fill").style.width = "100%";
-};
+    document.getElementById("prod-fill").style.width = "87%";
+
+});
