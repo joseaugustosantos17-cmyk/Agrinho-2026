@@ -1,111 +1,207 @@
+/* =========================
+   🌱 AGRINHO CAMPEÃO CSS
+========================= */
+
 :root {
-    --verde: #2e7d32;
-    --verde2: #66bb6a;
+  --verde: #2e7d32;
+  --verde2: #66bb6a;
+  --verde3: #1b5e20;
+
+  --fundo: #e8f5e9;
+  --texto: #1c1c1c;
+
+  --card: rgba(255, 255, 255, 0.9);
+  --sombra: rgba(0,0,0,0.1);
 }
 
-/* 🌿 FUNDO ANIMADO */
-body {
-    margin: 0;
-    font-family: Arial;
-    color: #222;
-    overflow-x: hidden;
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-    background: linear-gradient(-45deg, #e8f5e9, #f1fff1, #d0ffd0, #ffffff);
-    background-size: 400% 400%;
-    animation: fundo 10s ease infinite;
+body {
+  background: linear-gradient(-45deg, #e8f5e9, #f1fff1, #d0ffd0, #ffffff);
+  background-size: 400% 400%;
+  animation: fundo 10s ease infinite;
+  color: var(--texto);
+  transition: 0.4s;
 }
 
 @keyframes fundo {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* HEADER */
+/* =========================
+   🌙 DARK MODE
+========================= */
+
+body.dark {
+  background: #0f1f0f;
+  color: #e8f5e9;
+}
+
+body.dark .card {
+  background: rgba(25, 40, 25, 0.9);
+  color: #e8f5e9;
+}
+
+/* =========================
+   HEADER
+========================= */
+
 .header {
-    text-align: center;
-    padding: 20px;
-    background: linear-gradient(90deg, var(--verde), var(--verde2));
-    color: white;
+  text-align: center;
+  padding: 25px;
+  background: linear-gradient(90deg, var(--verde), var(--verde2));
+  color: white;
+  box-shadow: 0 4px 20px var(--sombra);
 }
 
-/* BOTÕES */
+/* =========================
+   CONTROLES
+========================= */
+
+.controls {
+  margin-top: 10px;
+}
+
+.controls input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
 .controls button {
-    margin: 3px;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    background: var(--verde);
-    color: white;
-    transition: 0.3s;
+  margin: 5px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: var(--verde);
+  color: white;
+  transition: 0.3s;
 }
 
 .controls button:hover {
-    transform: scale(1.05);
-    background: var(--verde2);
+  background: var(--verde2);
+  transform: scale(1.05);
 }
 
-/* CONTAINER */
+/* =========================
+   MAIN CONTAINER
+========================= */
+
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
 }
 
-/* CARDS */
+/* =========================
+   CARDS
+========================= */
+
 .card {
-    width: 260px;
-    background: rgba(255,255,255,0.9);
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: 0.3s;
-    backdrop-filter: blur(6px);
+  width: 260px;
+  background: var(--card);
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px var(--sombra);
+  transition: 0.3s;
+  backdrop-filter: blur(6px);
 }
 
 .card:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* BARRAS */
+/* =========================
+   TÍTULOS
+========================= */
+
+h1, h2, h3 {
+  font-weight: bold;
+}
+
+/* =========================
+   LISTAS
+========================= */
+
+ul {
+  padding-left: 18px;
+}
+
+li {
+  margin: 5px 0;
+}
+
+/* =========================
+   BARRAS DE PROGRESSO
+========================= */
+
 .bar {
-    width: 100%;
-    height: 14px;
-    background: #ddd;
-    border-radius: 10px;
-    overflow: hidden;
+  width: 100%;
+  height: 12px;
+  background: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .fill {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, var(--verde), var(--verde2));
-    transition: 1s;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--verde), var(--verde2));
+  transition: 1s;
 }
 
-/* FOOTER */
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard {
+  text-align: left;
+}
+
+/* =========================
+   BOTÃO PRINCIPAL EXTRA
+========================= */
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
 footer {
-    text-align: center;
-    padding: 10px;
+  text-align: center;
+  padding: 15px;
+  margin-top: 20px;
+  background: var(--verde3);
+  color: white;
 }
 
-/* 🌙 DARK MODE COMPLETO */
-.dark {
-    background: #0f1f0f;
-    color: #e8f5e9;
-}
+/* =========================
+   RESPONSIVO
+========================= */
 
-.dark .card {
-    background: rgba(27, 46, 27, 0.9);
-}
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
 
-.dark .bar {
-    background: #2a3b2a;
-}
-
-.dark .header {
-    background: linear-gradient(90deg, #1b5e20, #2e7d32);
+  .card {
+    width: 90%;
+  }
 }
