@@ -1,108 +1,63 @@
 // ===============================
-// UTIL: CACHE DE ELEMENTOS
+// VARIÁVEIS GLOBAIS
 // ===============================
-const $ = (id) => document.getElementById(id);
+let tamanhoFonte = 16;
+let usuario = "";
 
 // ===============================
-// MODO ESCURO COM MEMÓRIA
+// SAUDAÇÃO PERSONALIZADA
 // ===============================
-const modeToggle = $("mode-toggle");
+const btnSaudacao = document.getElementById("btn-saudacao");
 
-if (modeToggle) {
-    const savedTheme = localStorage.getItem("theme");
+btnSaudacao.addEventListener("click", () => {
+    usuario = document.getElementById("nome").value;
 
-    if (savedTheme === "dark") {
-        document.body.classList.add("dark-mode");
+    if (usuario.trim() === "") {
+        alert("Digite seu nome!");
+        return;
     }
 
-    modeToggle.addEventListener("click", () => {
-        const isDark = document.body.classList.toggle("dark-mode");
-
-        localStorage.setItem("theme", isDark ? "dark" : "light");
-    });
-}
-
-// ===============================
-// TAMANHO DA FONTE (REFATORADO)
-// ===============================
-const MIN_FONT = 12;
-const MAX_FONT = 24;
-
-let currentSize = Number(localStorage.getItem("fontSize")) || 16;
-document.body.style.fontSize = `${currentSize}px`;
-
-const updateFontSize = (newSize) => {
-    currentSize = newSize;
-    document.body.style.fontSize = `${currentSize}px`;
-    localStorage.setItem("fontSize", currentSize);
-};
-
-const fontIncrease = $("font-increase");
-const fontDecrease = $("font-decrease");
-
-if (fontIncrease) {
-    fontIncrease.addEventListener("click", () => {
-        if (currentSize < MAX_FONT) updateFontSize(currentSize + 1);
-    });
-}
-
-if (fontDecrease) {
-    fontDecrease.addEventListener("click", () => {
-        if (currentSize > MIN_FONT) updateFontSize(currentSize - 1);
-    });
-}
-
-// ===============================
-// SISTEMA DE TABS (MAIS SEGURO)
-// ===============================
-function openTab(evt, tabName) {
-    const contents = document.querySelectorAll(".tab-content");
-    const links = document.querySelectorAll(".tab-link");
-    const target = $(tabName);
-
-    if (!target) return;
-
-    contents.forEach(el => el.classList.remove("active"));
-    links.forEach(el => el.classList.remove("active"));
-
-    target.classList.add("active");
-    evt.currentTarget.classList.add("active");
-}
-
-// ===============================
-// ANIMAÇÃO DE VALORES (OTIMIZADA)
-// ===============================
-function animateValue(id, end, duration = 1500) {
-    const el = $(id);
-    if (!el) return;
-
-    let start = 0;
-    const stepTime = Math.max(10, Math.floor(duration / end));
-
-    const timer = setInterval(() => {
-        start++;
-        el.textContent = `${start}%`;
-
-        if (start >= end) {
-            clearInterval(timer);
-        }
-    }, stepTime);
-}
-
-// ===============================
-// DASHBOARD INIT
-// ===============================
-document.addEventListener("DOMContentLoaded", () => {
-    animateValue("carbon-stat", 94);
-    animateValue("water-stat", 100);
-    animateValue("prod-stat", 87);
-
-    const setWidth = (id, value) => {
-        const el = $(id);
-        if (el) el.style.width = `${value}%`;
-    };
-
-    setWidth("carbon-fill", 94);
-    setWidth("water-fill", 100);
-    setWidth("prod-fill", 87);
+    document.getElementById("saudacao").textContent =
+        "Olá, " + usuario + "! Bem-vindo ao Agro Sustentável 🌱";
 });
+
+// ===============================
+// TEMA ESCURO / CLARO
+// ===============================
+document.getElementById("theme-toggle").addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+});
+
+// ===============================
+// TAMANHO DA FONTE
+// ===============================
+document.getElementById("font-up").addEventListener("click", () => {
+    if (tamanhoFonte < 24) {
+        tamanhoFonte++;
+        document.body.style.fontSize = tamanhoFonte + "px";
+    }
+});
+
+document.getElementById("font-down").addEventListener("click", () => {
+    if (tamanhoFonte > 12) {
+        tamanhoFonte--;
+        document.body.style.fontSize = tamanhoFonte + "px";
+    }
+});
+
+// ===============================
+// ANIMAÇÃO DA BARRA + CONTADOR
+// ===============================
+let valor = 0;
+const barra = document.getElementById("barra");
+const contador = document.getElementById("contador");
+
+const animar = setInterval(() => {
+    if (valor >= 85) {
+        clearInterval(animar);
+    } else {
+        valor++;
+        barra.style.width = valor + "%";
+        contador.textContent = valor + "%";
+    }
+}, 20);
